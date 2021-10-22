@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unflix/style/text_style.dart';
+
 class MainPoster extends StatelessWidget {
   const MainPoster({Key? key}) : super(key: key);
 
@@ -11,67 +13,128 @@ class MainPoster extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/PosterGambitHau.jpeg'),
-              fit: BoxFit.fill,
-            )),
+          image: AssetImage('assets/images/PosterGambitHau.jpeg'),
+          fit: BoxFit.fill,
+        )),
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 25),
+          margin: EdgeInsets.symmetric(horizontal: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisSize: MainAxisSize.max,
             children: [
-              TextButton(
-                  onPressed: () {},
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                      Text('Danh sach',
-                          style: textInApp.subtitle(
-                              Colors.white, context)),
-                    ],
-                  )),
-              TextButton(
-                  onPressed: () {},
-                  child: Container(
-                    height: 40,
-                    width: 86,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
+              Container(
+                width: MediaQuery.of(context).size.width - 190,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Icon(
-                          Icons.play_circle_fill,
-                          color: Colors.black,
+                        Container(
+                          child: Text('GAMBIT HẬU',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800)),
                         ),
-                        Text(' Phat',
-                            style: textInApp.subtitle(
-                                Colors.black, context)),
+                        Container(
+                          padding: EdgeInsets.all(1),
+                          margin: EdgeInsets.only(left: 20, right: 10),
+                          width: 23,
+                          height: 11,
+                          decoration: BoxDecoration(
+                            color: Color(0xffF6C700),
+                          ),
+                          child: Text(
+                            'IMDb',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              Text(
+                                '8.6',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800
+                                ),
+                              ),
+                              Text(
+                                '/10 ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Icon(
+                                Icons.star,
+                                color: Color(0xffF6C700),
+                                size: 11,
+                              )
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )),
-              TextButton(
-                  onPressed: () {},
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.error,
-                        color: Colors.white,
+                    Container(
+                      width: MediaQuery.of(context).size.width - 190,
+                      child: Text(
+                        'Kìa con bướm vàng, kìa con bướm vàng',
+                        style: textInApp.subtitle(Colors.white, context),
                       ),
-                      Text('Thong tin',
-                          style: textInApp.subtitle(
-                              Colors.white, context)),
-                    ],
-                  ))
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        height: 46,
+                        width: 127,
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        decoration: BoxDecoration(
+                            color: Color(0xffF6C700),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.play_arrow,
+                              color: Colors.black,
+                              size: 28,
+                            ),
+                            Text(' Phát',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800)),
+                          ],
+                        ),
+                      )),
+                  Container(
+                    width: 1,
+                    margin: EdgeInsets.only(right: 10),
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Icon(
+                          Icons.more_vert_rounded,
+                          color: Colors.white,
+                        )),
+                  )
+                ],
+              ),
             ],
           ),
         ));

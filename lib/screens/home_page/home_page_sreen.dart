@@ -26,7 +26,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             children: [
               MainPoster(),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 27),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     Row(
@@ -39,98 +39,100 @@ class _HomePageScreenState extends State<HomePageScreen> {
                               color: Colors.white,
                               size: 30,
                             )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.account_box_outlined,
-                              color: Colors.white,
-                              size: 35,
-                            ))
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width / 2 - 80,
-                        ),
-                        Container(
-                          width: 100,
-                          child: Text(
-                            'Trang chu',
-                            style: textInApp.headline6(Colors.white, context),
-                            textAlign: TextAlign.center,
+                        MaterialButton(
+                          onPressed: (){},
+                          child: Container(
+                            child: Text(
+                              'Phim tr.hình',
+                              style: textInApp.headline6(Colors.white, context),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        PopupMenuButton(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'The loai  ',
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
-                                ),
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.white,
-                                )
-                              ],
+                        MaterialButton(
+                          onPressed: (){},
+                          child: Container(
+                            child: Text(
+                              'Phim',
+                              style: textInApp.headline6(Colors.white, context),
+                              textAlign: TextAlign.center,
                             ),
-                            color: Colors.transparent,
-                            itemBuilder: (context) => [
-                              PopupMenuItem<int>(
-                                value: 0,
-                                child: Text(
-                                  "Anime",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
-                                ),
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: (){},
+                          child: PopupMenuButton(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'The loai  ',
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.white,
+                                  )
+                                ],
                               ),
-                              PopupMenuItem<int>(
-                                value: 1,
-                                child: Text(
-                                  "Vien tuong",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
+                              color: Colors.transparent,
+                              itemBuilder: (context) => [
+                                PopupMenuItem<int>(
+                                  value: 0,
+                                  child: Text(
+                                    "Anime",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
                                 ),
-                              ),
-                              PopupMenuItem<int>(
-                                value: 2,
-                                child: Text(
-                                  "Tinh cam",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
+                                PopupMenuItem<int>(
+                                  value: 1,
+                                  child: Text(
+                                    "Vien tuong",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
                                 ),
-                              ),
-                              PopupMenuItem<int>(
-                                value: 3,
-                                child: Text(
-                                  "Phieu luu",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
+                                PopupMenuItem<int>(
+                                  value: 2,
+                                  child: Text(
+                                    "Tinh cam",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
                                 ),
-                              ),
-                              PopupMenuItem<int>(
-                                value: 4,
-                                child: Text(
-                                  "Kinh di",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
+                                PopupMenuItem<int>(
+                                  value: 3,
+                                  child: Text(
+                                    "Phieu luu",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
                                 ),
-                              ),
-                              PopupMenuItem<int>(
-                                value: 5,
-                                child: Text(
-                                  "Phim truyen hinh",
-                                  style: textInApp.headline6(
-                                      Colors.white, context),
+                                PopupMenuItem<int>(
+                                  value: 4,
+                                  child: Text(
+                                    "Kinh di",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
                                 ),
-                              ),
-                            ])
+                                PopupMenuItem<int>(
+                                  value: 5,
+                                  child: Text(
+                                    "Phim truyen hinh",
+                                    style: textInApp.headline6(
+                                        Colors.white, context),
+                                  ),
+                                ),
+                              ]),
+                        )
                       ],
                     )
                   ],
