@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unflix/data/listposter.dart';
+import 'package:unflix/core/data/listposter.dart';
 import 'package:unflix/screens/home_page/list_movies_continue_to_watch.dart';
 import 'package:unflix/screens/home_page/list_poster_film.dart';
 import 'package:unflix/screens/home_page/main_poster.dart';
