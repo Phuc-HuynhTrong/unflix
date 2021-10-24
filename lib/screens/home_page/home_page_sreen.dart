@@ -5,8 +5,7 @@ import 'package:unflix/screens/home_page/list_movies_continue_to_watch.dart';
 import 'package:unflix/screens/home_page/list_poster_film.dart';
 import 'package:unflix/screens/home_page/main_poster.dart';
 import 'package:unflix/style/text_style.dart';
-import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
+
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);
@@ -28,7 +27,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             children: [
               MainPoster(),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
                     Row(
@@ -45,26 +44,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        MaterialButton(
-                          onPressed: (){},
-                          child: Container(
-                            child: Text(
-                              'Phim tr.hình',
-                              style: textInApp.headline6(Colors.white, context),
-                              textAlign: TextAlign.center,
-                            ),
+                        TextButton(
+                          onPressed:(){},
+                          child: Text(
+                            'Phim tr.hình',
+                            style: textInApp.headline6(Colors.white, context),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                        MaterialButton(
+                        TextButton(
                           onPressed: (){},
-                          child: Container(
-                            child: Text(
-                              'Phim',
-                              style: textInApp.headline6(Colors.white, context),
-                              textAlign: TextAlign.center,
-                            ),
+                          child: Text(
+                            'Phim',
+                            style: textInApp.headline6(Colors.white, context),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         MaterialButton(
@@ -73,7 +68,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                               child: Row(
                                 children: [
                                   Text(
-                                    'The loai  ',
+                                    'The loai',
                                     style: textInApp.headline6(
                                         Colors.white, context),
                                   ),
@@ -147,12 +142,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 13),
+                  margin: EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Danh sach tiep tuc xem cua Kim Lam',
+                        'Danh sách tiếp tục xem của bạn',
                         style: textInApp.headline6(Colors.white, context),
                         textAlign: TextAlign.start,
                       ),
@@ -170,12 +165,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 13),
+                  margin: EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Phim dang thinh hanh',
+                        'Phim đang thịnh hành',
                         style: textInApp.headline6(Colors.white, context),
                         textAlign: TextAlign.start,
                       ),
@@ -193,12 +188,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 13),
+                  margin: EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Chuong trinh truyen hinh Au-My',
+                        'Chương trình truyền hình Âu-Mỹ',
                         style: textInApp.headline6(Colors.white, context),
                         textAlign: TextAlign.start,
                       ),
