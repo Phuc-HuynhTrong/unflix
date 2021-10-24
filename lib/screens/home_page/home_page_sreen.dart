@@ -5,6 +5,8 @@ import 'package:unflix/screens/home_page/list_movies_continue_to_watch.dart';
 import 'package:unflix/screens/home_page/list_poster_film.dart';
 import 'package:unflix/screens/home_page/main_poster.dart';
 import 'package:unflix/style/text_style.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);

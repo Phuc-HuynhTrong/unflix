@@ -11,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int index = 0;
+
   @override
   void onTapedTap(int id) {
     setState(() {

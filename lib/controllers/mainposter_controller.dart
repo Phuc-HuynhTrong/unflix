@@ -8,6 +8,7 @@ class MoviePosterController extends GetxController
   late PageController pageController ;
   int page = 3;
   @override
+
   void onInit() {
     pageController = PageController();
     _animationController =
@@ -28,16 +29,20 @@ class MoviePosterController extends GetxController
     pageController.dispose();
     print('close controller');
   }
-  get getPage => this.page;
+  RxInt _currentPage = 1.obs;
+  RxInt get currentPage => this._currentPage;
+
   nextMovie() {
     if (page > 1) {
       pageController.nextPage(
           duration: Duration(milliseconds: 250), curve: Curves.ease);
       _animationController.reset();
       _animationController.forward().whenComplete(() => nextMovie());
+      _currentPage.value = 5-page;
       page -= 1;
     } else {
       page = 3;
+      _currentPage.value = 1;
       _animationController.reset();
       _animationController.forward().whenComplete(() => nextMovie());
       pageController.animateToPage(0,

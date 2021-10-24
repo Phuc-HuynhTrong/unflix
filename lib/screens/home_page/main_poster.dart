@@ -16,7 +16,7 @@ class MainPoster extends StatelessWidget {
     ListPoster listPoster = ListPoster();
     TextInApp textInApp = TextInApp();
     return Container(
-        height: 590,
+        height: 570,
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
@@ -171,7 +171,39 @@ class MainPoster extends StatelessWidget {
                     );
                   }),
             ),
-
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 1),
+              child: Obx(() => Container(
+                    height: 1,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          color: moviePosterController.currentPage == 1
+                              ? Colors.white
+                              : Colors.white38,
+                          size: 12,
+                        ),
+                        Icon(
+                          Icons.circle,
+                          color: moviePosterController.currentPage == 2
+                              ? Colors.white
+                              : Colors.white38,
+                          size: 12,
+                        ),
+                        Icon(
+                          Icons.circle,
+                          color: moviePosterController.currentPage == 3
+                              ? Colors.white
+                              : Colors.white38,
+                          size: 12,
+                        )
+                      ],
+                    ),
+                  )),
+            ),
           ],
         ));
   }
