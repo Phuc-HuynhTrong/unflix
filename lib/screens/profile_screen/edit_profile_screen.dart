@@ -28,6 +28,7 @@ class EditProfileScreen extends StatelessWidget {
         ],
       ),
       body: Container(
+        padding: EdgeInsets.symmetric(vertical: 25.0),
         child: Column(
           children: [
             Icon(
@@ -79,6 +80,7 @@ class _CustomInputTileState extends State<CustomInputTile> {
         children: [
           Container(
             width: 70.0,
+            margin: EdgeInsets.only(right: 5.0),
             child: Text(
               widget.label,
               style: TextStyle(

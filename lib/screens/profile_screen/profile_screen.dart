@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/profile_screen/account_screen.dart';
+import 'package:unflix/screens/profile_screen/downloaded_screen.dart';
 import 'package:unflix/screens/profile_screen/edit_profile_screen.dart';
+import 'package:unflix/screens/profile_screen/favourite_list_screen.dart';
+import 'package:unflix/screens/profile_screen/help_screen.dart';
+import 'package:unflix/screens/profile_screen/setting_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -25,16 +30,29 @@ class ProfileScreen extends StatelessWidget {
         child: ListView(
           children: [
             UserAvatar(),
-            CustomButton(leading: Icons.check, title: "Danh sách"),
             CustomButton(
-                leading: Icons.file_download_outlined,
-                title: "Tệp đã tải xuống"),
+              leading: Icons.check,
+              title: "Danh sách",
+              navigateToScreen: FavouriteListScreen(),
+            ),
             CustomButton(
-                leading: Icons.settings_sharp, title: "Cài đặt ứng dụng"),
+              leading: Icons.file_download_outlined,
+              title: "Tệp đã tải xuống",
+              navigateToScreen: DownloadedScreen(),
+            ),
             CustomButton(
-                leading: Icons.person_outline_rounded, title: "Tài khoản"),
+              leading: Icons.settings_sharp,
+              title: "Cài đặt ứng dụng",
+              navigateToScreen: SettingScreen(),
+            ),
             CustomButton(
-                leading: Icons.help_outline_outlined, title: "Trợ giúp"),
+                navigateToScreen: AccountScreen(),
+                leading: Icons.person_outline_rounded,
+                title: "Tài khoản"),
+            CustomButton(
+                navigateToScreen: HelpScreen(),
+                leading: Icons.help_outline_outlined,
+                title: "Trợ giúp"),
             SizedBox(
               height: 10.0,
             ),
@@ -144,47 +162,53 @@ class UserAvatar extends StatelessWidget {
 class CustomButton extends StatelessWidget {
   final IconData leading;
   final String title;
+  final Widget navigateToScreen;
   const CustomButton({
     Key? key,
     required this.leading,
     required this.title,
+    required this.navigateToScreen,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 1.0),
-      height: 50.0,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      color: Color.fromARGB(255, 18, 18, 18),
-      child: Row(
-        children: [
-          Icon(
-            leading,
-            color: Color.fromARGB(255, 122, 122, 122),
-            size: 25.0,
-          ),
-          SizedBox(
-            width: 20.0,
-          ),
-          Expanded(
-            child: Text(
-              title,
-              style: TextStyle(
-                color: Color.fromARGB(255, 122, 122, 122),
-                fontSize: 19.0,
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (_) => navigateToScreen)),
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 1.0),
+        height: 50.0,
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        color: Color.fromARGB(255, 18, 18, 18),
+        child: Row(
+          children: [
+            Icon(
+              leading,
+              color: Color.fromARGB(255, 122, 122, 122),
+              size: 25.0,
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 122, 122, 122),
+                  fontSize: 19.0,
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 5.0),
-            child: Icon(
-              Icons.arrow_right_rounded,
-              color: Color.fromARGB(255, 122, 122, 122),
-              size: 30.0,
-            ),
-          )
-        ],
+            Container(
+              margin: EdgeInsets.only(right: 5.0),
+              child: Icon(
+                Icons.arrow_right_rounded,
+                color: Color.fromARGB(255, 122, 122, 122),
+                size: 30.0,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
