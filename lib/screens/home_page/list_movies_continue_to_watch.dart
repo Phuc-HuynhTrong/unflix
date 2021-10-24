@@ -15,6 +15,7 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
     return Container(
         height: 207,
         width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,

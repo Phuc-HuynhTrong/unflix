@@ -24,6 +24,9 @@ class MainPoster extends StatelessWidget {
               height: 550,
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
+                  onPageChanged: (int index) {
+                    moviePosterController.chanePagecurrent(index);
+                  },
                   controller: moviePosterController.pageController,
                   itemCount: 3,
                   itemBuilder: (context, index) {
@@ -181,6 +184,13 @@ class MainPoster extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.circle,
+                          color: moviePosterController.currentPage == 0
+                              ? Colors.white
+                              : Colors.white38,
+                          size: 12,
+                        ),
+                        Icon(
+                          Icons.circle,
                           color: moviePosterController.currentPage == 1
                               ? Colors.white
                               : Colors.white38,
@@ -189,13 +199,6 @@ class MainPoster extends StatelessWidget {
                         Icon(
                           Icons.circle,
                           color: moviePosterController.currentPage == 2
-                              ? Colors.white
-                              : Colors.white38,
-                          size: 12,
-                        ),
-                        Icon(
-                          Icons.circle,
-                          color: moviePosterController.currentPage == 3
                               ? Colors.white
                               : Colors.white38,
                           size: 12,

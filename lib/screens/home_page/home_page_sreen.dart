@@ -142,7 +142,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: EdgeInsets.only(top: 10, right:10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
