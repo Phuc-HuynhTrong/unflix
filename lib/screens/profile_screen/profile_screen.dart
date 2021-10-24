@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/profile_screen/edit_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -51,75 +53,86 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget UserAvatar() {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.0),
-        height: 130.0,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(
-              Icons.person_outline_rounded,
-              size: 55.0,
-              color: Colors.white,
+  Widget SignOutButton() {
+    return Center(
+      child: GestureDetector(
+        onTap: () {},
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10.0),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 18, 18, 18),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          alignment: Alignment.center,
+          height: 42.0,
+          width: 157.0,
+          child: Text(
+            'Đăng xuất',
+            style: TextStyle(
+              color: Color.fromARGB(255, 122, 122, 122),
+              fontSize: 16.0,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 8.0),
-              child: Text(
-                'Kim Lom',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w700,
-                ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class UserAvatar extends StatelessWidget {
+  const UserAvatar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      height: 130.0,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.person_outline_rounded,
+            size: 55.0,
+            color: Colors.white,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 8.0),
+            child: Text(
+              'Kim Lom',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22.0,
+                fontWeight: FontWeight.w700,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.edit_outlined,
-                  color: Colors.white,
-                  size: 18.0,
-                ),
-                SizedBox(
-                  width: 8.0,
-                ),
-                Text('Quản lý hồ sơ',
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.edit_outlined,
+                color: Colors.white,
+                size: 18.0,
+              ),
+              SizedBox(
+                width: 8.0,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => EditProfileScreen()));
+                },
+                child: Text('Quản lý hồ sơ',
                     style: TextStyle(
                       letterSpacing: 1.2,
                       color: Color.fromARGB(255, 146, 146, 146),
                       fontSize: 15.0,
                       fontWeight: FontWeight.w500,
                     )),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget SignOutButton() {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10.0),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 18, 18, 18),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        alignment: Alignment.center,
-        height: 42.0,
-        width: 157.0,
-        child: Text(
-          'Đăng xuất',
-          style: TextStyle(
-            color: Color.fromARGB(255, 122, 122, 122),
-            fontSize: 16.0,
+              ),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }

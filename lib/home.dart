@@ -59,9 +59,9 @@ class _HomeState extends State<Home> {
                   //color: Colors.white,
                 )),
             BottomNavigationBarItem(
-                label: "Tệp tải xuống",
+                label: "Cá nhân",
                 icon: Icon(
-                  Icons.download,
+                  Icons.person_outline_sharp,
                   size: 30,
                   //color: Colors.white,
                 )),
