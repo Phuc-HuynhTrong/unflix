@@ -86,7 +86,7 @@ class UserAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.0),
-      height: 130.0,
+      height: 140.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -106,31 +106,34 @@ class UserAvatar extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.edit_outlined,
-                color: Colors.white,
-                size: 18.0,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => EditProfileScreen()));
+            },
+            child: Container(
+              width: 165.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.edit_outlined,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                  SizedBox(
+                    width: 8.0,
+                  ),
+                  Text('Quản lý hồ sơ',
+                      style: TextStyle(
+                        letterSpacing: 1.2,
+                        color: Color.fromARGB(255, 146, 146, 146),
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w500,
+                      )),
+                ],
               ),
-              SizedBox(
-                width: 8.0,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => EditProfileScreen()));
-                },
-                child: Text('Quản lý hồ sơ',
-                    style: TextStyle(
-                      letterSpacing: 1.2,
-                      color: Color.fromARGB(255, 146, 146, 146),
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w500,
-                    )),
-              ),
-            ],
+            ),
           ),
         ],
       ),
