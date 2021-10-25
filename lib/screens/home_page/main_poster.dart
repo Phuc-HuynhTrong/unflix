@@ -21,6 +21,7 @@ class MainPoster extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              margin: EdgeInsets.all(1),
               height: 550,
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
@@ -39,7 +40,7 @@ class MainPoster extends StatelessWidget {
                         fit: BoxFit.fill,
                       )),
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15),
+                        margin: EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -131,13 +132,14 @@ class MainPoster extends StatelessWidget {
                                       height: 46,
                                       width: 127,
                                       padding:
-                                          EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                          EdgeInsets.fromLTRB(10, 10, 0, 10),
+                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       decoration: BoxDecoration(
                                           color: Color(0xffF6C700),
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       child: Row(
-                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisSize: MainAxisSize.min,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         mainAxisAlignment:
@@ -157,8 +159,8 @@ class MainPoster extends StatelessWidget {
                                       ),
                                     )),
                                 Container(
-                                  width: 1,
-                                  margin: EdgeInsets.only(right: 10),
+                                  width: 5,
+                                  margin: EdgeInsets.only(right: 20),
                                   child: TextButton(
                                       onPressed: () {},
                                       child: Icon(

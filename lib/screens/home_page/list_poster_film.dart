@@ -19,7 +19,7 @@ class _ListScrollPosterState extends State<ListScrollPoster> {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) => MaterialButton(
-                  padding: EdgeInsets.symmetric(horizontal: 6),
+                  padding: EdgeInsets.only(right: 12),
                   onPressed: () {},
                   child: Container(
                     //margin: EdgeInsets.only(right: 12),

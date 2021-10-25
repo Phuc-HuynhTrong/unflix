@@ -139,10 +139,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
           Container(
             height: 243,
+            margin: EdgeInsets.only(left: 10, right: 5),
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 10, right:10),
+                  margin: EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -162,6 +163,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
           Container(
             height: 203,
+            margin: EdgeInsets.only(left: 10, right: 5),
             child: Column(
               children: [
                 Container(
@@ -185,6 +187,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
           Container(
             height: 203,
+            margin: EdgeInsets.only(left: 10, right: 5),
             child: Column(
               children: [
                 Container(
