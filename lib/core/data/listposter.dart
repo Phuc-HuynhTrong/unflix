@@ -44,4 +44,4 @@ class MainPosterModel {
 }
 
 List<AssetImage> favouriteList =
-    List.filled(10, AssetImage('assets/images/peakyblinders.jpg'));
+    List.filled(10, AssetImage('assets/images/stpng.png'));

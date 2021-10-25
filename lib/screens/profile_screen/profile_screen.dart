@@ -6,6 +6,7 @@ import 'package:unflix/screens/profile_screen/edit_profile_screen.dart';
 import 'package:unflix/screens/profile_screen/favourite_list_screen.dart';
 import 'package:unflix/screens/profile_screen/help_screen.dart';
 import 'package:unflix/screens/profile_screen/setting_screen.dart';
+import 'package:unflix/style/text_style.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -86,10 +87,7 @@ class ProfileScreen extends StatelessWidget {
           width: 157.0,
           child: Text(
             'Đăng xuất',
-            style: TextStyle(
-              color: Color.fromARGB(255, 122, 122, 122),
-              fontSize: 16.0,
-            ),
+            style: kLTTile,
           ),
         ),
       ),
@@ -177,7 +175,7 @@ class CustomButton extends StatelessWidget {
           context, MaterialPageRoute(builder: (_) => navigateToScreen)),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 1.0),
-        height: 50.0,
+        height: 45.0,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
@@ -185,7 +183,7 @@ class CustomButton extends StatelessWidget {
             Icon(
               leading,
               color: Color.fromARGB(255, 122, 122, 122),
-              size: 25.0,
+              size: 24.0,
             ),
             SizedBox(
               width: 20.0,
@@ -193,14 +191,11 @@ class CustomButton extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: TextStyle(
-                  color: Color.fromARGB(255, 122, 122, 122),
-                  fontSize: 19.0,
-                ),
+                style: kLTTile,
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 5.0),
+              margin: EdgeInsets.only(right: 3.0),
               child: Icon(
                 Icons.arrow_right_rounded,
                 color: Color.fromARGB(255, 122, 122, 122),

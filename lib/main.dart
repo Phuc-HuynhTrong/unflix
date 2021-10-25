@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           // Màu của dòng chữ phụ hoặc chữ trên nền background của cardColor.
           //hintColor: const Color(0xff9C9C9C),
           hintColor: const Color(0xff595959),
-          
           fontFamily: 'Noto Sans'),
       home: Home(),
     );
