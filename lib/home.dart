@@ -28,10 +28,10 @@ class _HomeState extends State<Home> {
           child: index == 0
               ? HomePageScreen()
               : index == 1
-              ? Container()
-              : index == 2
-              ? SearchMainScreen()
-              : Container(),
+                  ? Container()
+                  : index == 2
+                      ? SearchMainScreen()
+                      : Container(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.transparent,
@@ -73,4 +73,3 @@ class _HomeState extends State<Home> {
         ));
   }
 }
-
