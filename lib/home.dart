@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/search_screens/search_main_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _HomeState extends State<Home> {
               : index == 1
               ? Container()
               : index == 2
-              ? Container()
+              ? SearchMainScreen()
               : Container(),
         ),
         bottomNavigationBar: BottomNavigationBar(
