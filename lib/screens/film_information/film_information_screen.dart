@@ -1,0 +1,184 @@
+import 'package:flutter/material.dart';
+import 'package:unflix/core/data/ListInformationFilm.dart';
+import 'package:unflix/screens/film_information/score_row.dart';
+import 'package:video_player/video_player.dart';
+
+class FilmInformationScreen extends StatefulWidget {
+  _FilmInformationScreenState createState() => _FilmInformationScreenState();
+}
+
+class _FilmInformationScreenState extends State<FilmInformationScreen> {
+  ListMovie listMovie = ListMovie();
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = VideoPlayerController.asset(
+        'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        automaticallyImplyLeading: true,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.cast,
+                color: Colors.white,
+                size: 30,
+              )),
+        ],
+      ),
+      body: ListView(
+        children: [
+          Container(
+            height: 240,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(),
+            child: Stack(
+              children: [
+                Container(
+                  height: 211,
+                  margin: EdgeInsets.only(bottom: 30),
+                  width: MediaQuery.of(context).size.width,
+                  child: FutureBuilder(
+                    future: _initializeVideoPlayerFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return AspectRatio(
+                          aspectRatio: _controller.value.aspectRatio,
+                          child: VideoPlayer(_controller),
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              if (_controller.value.isPlaying) {
+                                _controller.pause();
+                              } else {
+                                _controller.play();
+                              }
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                border:
+                                    Border.all(color: Colors.white, width: 1)),
+                            child: Icon(
+                              _controller.value.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  listMovie.listMovie[0].name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                  ),
+                ),
+                ScoreRow(),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Color(0xffF6C700),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.play_arrow,
+                          color: Colors.black,
+                          size: 28,
+                        ),
+                        Text(' Phát',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15),
+            child: TextFormField(
+              cursorColor: Colors.black,
+              autofocus: false,
+              readOnly: true,
+              minLines: 1,
+              maxLines: 100,
+              initialValue: listMovie.listMovie[0].filmDescription,
+              decoration: InputDecoration(
+                  focusColor: Colors.black,
+                  fillColor: Colors.black,
+                  hoverColor: Colors.black,
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide.none
+                ),
+              ),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
