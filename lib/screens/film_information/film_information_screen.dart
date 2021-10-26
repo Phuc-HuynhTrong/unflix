@@ -27,8 +27,15 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        automaticallyImplyLeading: true,
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           IconButton(
               onPressed: () {},
@@ -164,18 +171,101 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
               maxLines: 100,
               initialValue: listMovie.listMovie[0].filmDescription,
               decoration: InputDecoration(
-                  focusColor: Colors.black,
-                  fillColor: Colors.black,
-                  hoverColor: Colors.black,
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide.none
+                focusColor: Colors.black,
+                fillColor: Colors.black,
+                hoverColor: Colors.black,
+                border: UnderlineInputBorder(borderSide: BorderSide.none),
+              ),
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              MaterialButton(
+                onPressed: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 30,
+                    ), // icon
+                    Text(
+                      "Danh sách",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ), // text
+                  ],
                 ),
               ),
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12
+              MaterialButton(
+                onPressed: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                        width: 25,
+                        height: 25,
+                        child: Image.asset(
+                          "assets/icons/shape.png",
+                          fit: BoxFit.fill,
+                        )), // icon
+                    Text(
+                      "Đánh giá",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ), // text
+                  ],
+                ),
               ),
-            ),
+              MaterialButton(
+                onPressed: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.share,
+                      color: Colors.white,
+                      size: 30,
+                    ), // icon
+                    Text(
+                      "Chia sẻ",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ), // text
+                  ],
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.download,
+                      color: Colors.white,
+                      size: 30,
+                    ), // icon
+                    Text(
+                      "Tải xuống",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ), // text
+                  ],
+                ),
+              ),
+            ],
           )
         ],
       ),
