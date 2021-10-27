@@ -59,7 +59,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
               children: [
                 MaterialButton(
                   padding: EdgeInsets.all(0),
-                  onPressed: (){
+                  onPressed: () {
                     setState(() {
                       if (_controller.value.isPlaying) {
                         _controller.pause();
@@ -82,7 +82,9 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                           );
                         } else {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
                           );
                         }
                       },
@@ -98,7 +100,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Visibility(
-                          visible: _controller.value.isPlaying?false:true,
+                          visible: _controller.value.isPlaying ? false : true,
                           child: TextButton(
                             onPressed: () {
                               setState(() {
@@ -113,8 +115,8 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  border:
-                                      Border.all(color: Colors.white, width: 1)),
+                                  border: Border.all(
+                                      color: Colors.white, width: 1)),
                               child: Icon(
                                 _controller.value.isPlaying
                                     ? Icons.pause

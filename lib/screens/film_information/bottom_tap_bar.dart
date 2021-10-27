@@ -72,7 +72,7 @@ class _BottomTapBarState extends State<BottomTapBar>
         ),
         Container(
           margin: EdgeInsets.all(0),
-          height: 300,
+          height: 240,
           child: TabBarView(controller: _tabController, children: [
             Container(
             ),
@@ -85,7 +85,7 @@ class _BottomTapBarState extends State<BottomTapBar>
               child: ListMovie(),
             ),
             Container(
-              height: 211,
+              height: 240,
               child: TrailerTabScreen(),
             ),
           ]),
