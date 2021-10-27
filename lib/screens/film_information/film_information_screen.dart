@@ -57,55 +57,70 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
             decoration: BoxDecoration(),
             child: Stack(
               children: [
-                Container(
-                  height: 211,
-                  margin: EdgeInsets.only(bottom: 30),
-                  width: MediaQuery.of(context).size.width,
-                  child: FutureBuilder(
-                    future: _initializeVideoPlayerFuture,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(_controller),
-                        );
+                MaterialButton(
+                  padding: EdgeInsets.all(0),
+                  onPressed: (){
+                    setState(() {
+                      if (_controller.value.isPlaying) {
+                        _controller.pause();
                       } else {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
+                        _controller.play();
                       }
-                    },
+                    });
+                  },
+                  child: Container(
+                    height: 211,
+                    margin: EdgeInsets.only(bottom: 30),
+                    width: MediaQuery.of(context).size.width,
+                    child: FutureBuilder(
+                      future: _initializeVideoPlayerFuture,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return AspectRatio(
+                            aspectRatio: _controller.value.aspectRatio,
+                            child: VideoPlayer(_controller),
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              if (_controller.value.isPlaying) {
-                                _controller.pause();
-                              } else {
-                                _controller.play();
-                              }
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                border:
-                                    Border.all(color: Colors.white, width: 1)),
-                            child: Icon(
-                              _controller.value.isPlaying
-                                  ? Icons.pause
-                                  : Icons.play_arrow,
-                              color: Colors.white,
+                        Visibility(
+                          visible: _controller.value.isPlaying?false:true,
+                          child: TextButton(
+                            onPressed: () {
+                              setState(() {
+                                if (_controller.value.isPlaying) {
+                                  _controller.pause();
+                                } else {
+                                  _controller.play();
+                                }
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: Colors.white, width: 1)),
+                              child: Icon(
+                                _controller.value.isPlaying
+                                    ? Icons.pause
+                                    : Icons.play_arrow,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
