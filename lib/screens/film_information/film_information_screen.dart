@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/core/data/ListInformationFilm.dart';
+import 'package:unflix/screens/film_information/bottom_tap_bar.dart';
 import 'package:unflix/screens/film_information/score_row.dart';
 import 'package:video_player/video_player.dart';
 
@@ -7,11 +8,12 @@ class FilmInformationScreen extends StatefulWidget {
   _FilmInformationScreenState createState() => _FilmInformationScreenState();
 }
 
-class _FilmInformationScreenState extends State<FilmInformationScreen> {
-  ListMovie listMovie = ListMovie();
+class _FilmInformationScreenState extends State<FilmInformationScreen>
+    with TickerProviderStateMixin {
+  ListMovieInformation listMovieInformation = ListMovieInformation();
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
-
+  late TabController _tabController;
   @override
   void initState() {
     // TODO: implement initState
@@ -20,6 +22,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
         'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -120,7 +123,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  listMovie.listMovie[0].name,
+                  listMovieInformation.listMovie[0].name,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
@@ -169,7 +172,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
               readOnly: true,
               minLines: 1,
               maxLines: 100,
-              initialValue: listMovie.listMovie[0].filmDescription,
+              initialValue: listMovieInformation.listMovie[0].filmDescription,
               decoration: InputDecoration(
                 focusColor: Colors.black,
                 fillColor: Colors.black,
@@ -208,7 +211,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(bottom: 5),
+                        margin: EdgeInsets.only(bottom: 5),
                         width: 25,
                         height: 25,
                         child: Image.asset(
@@ -266,7 +269,14 @@ class _FilmInformationScreenState extends State<FilmInformationScreen> {
                 ),
               ),
             ],
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              height: 330,
+              child: BottomTapBar()),
         ],
       ),
     );

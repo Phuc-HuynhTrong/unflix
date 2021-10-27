@@ -9,7 +9,7 @@ class ScoreRow extends StatefulWidget {
 }
 
 class _ScoreRowState extends State<ScoreRow> {
-  ListMovie listMovie = ListMovie();
+  ListMovieInformation listMovie = ListMovieInformation();
   @override
   Widget build(BuildContext context) {
     return Row(

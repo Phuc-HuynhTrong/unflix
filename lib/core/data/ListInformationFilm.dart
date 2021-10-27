@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ListMovie {
+class ListMovieInformation {
   List<MovieInfomation> listMovie = [];
-  ListMovie() {
+  ListMovieInformation() {
     listMovie.add(MovieInfomation(
         AssetImage('assets/images/PosterGambitHau.jpeg'),
         "Gambit Hậu là một bộ phim truyền hình ngắn tập chiếu mạng thể loại chính kịch thời kì dựa trên tiểu thuyết cùng tên năm 1983 của Walter Tevis. Tiêu đề của bộ phim cũng là tên một nước đi khai cuộc cờ vua. Tác phẩm do Scott Frank cùng Allan Scott đồng sáng lập và được Frank chắp bút kiêm đạo diễn. Câu chuyện xoay quanh nữ kỳ thủ cờ vua thiên tài mồ côi cha mẹ Beth Harmon (Anya Taylor-Joy) trên hành trình trở thành kỳ thủ vĩ đại nhất thế giới trong khi vật lộn với chứng nghiện rượu và thuốc an thần, cũng như các vấn đề về tâm lý.",
