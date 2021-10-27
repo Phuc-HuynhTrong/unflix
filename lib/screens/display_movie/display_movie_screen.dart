@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+
 class DisplayMovieSceen extends StatefulWidget {
   const DisplayMovieSceen({Key? key}) : super(key: key);
 
@@ -20,12 +21,14 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _controller.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +41,14 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
               padding: EdgeInsets.all(0),
               onPressed: () {
                 setState(() {
-                  if (_controller.value.isPlaying) {
-                    _controller.pause();
-                  } else {
-                    _controller.play();
-                  }
+                  if (showAllButton == true) {
+                    setState(() {
+                      showAllButton = false;
+                    });
+                  } else
+                    setState(() {
+                      showAllButton = true;
+                    });
                 });
               },
               child: Container(
@@ -54,7 +60,26 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return AspectRatio(
                         aspectRatio: _controller.value.aspectRatio,
-                        child: VideoPlayer(_controller),
+                        child: Stack(
+                          children: [
+                            VideoPlayer(_controller),
+                            Visibility(
+                              visible:  _controller.value.isPlaying
+                                  ? showAllButton
+                                  ? false
+                                  : true
+                                  : true,
+                              child: Container(
+                                height: 10,
+                                margin: EdgeInsets.only(top:MediaQuery.of(context).size.height*5/6,),
+                                width: MediaQuery.of(context).size.width,
+                                child: VideoProgressIndicator(_controller,
+                                    allowScrubbing: true,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     } else {
                       return const Center(
@@ -76,7 +101,11 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Visibility(
-                      visible: _controller.value.isPlaying ? false : true,
+                      visible: _controller.value.isPlaying
+                          ? showAllButton
+                              ? false
+                              : true
+                          : true,
                       child: TextButton(
                         onPressed: () {
                           setState(() {
@@ -91,13 +120,14 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              border: Border.all(
-                                  color: Colors.white, width: 1)),
+                              border:
+                                  Border.all(color: Colors.white, width: 1)),
                           child: Icon(
                             _controller.value.isPlaying
                                 ? Icons.pause
                                 : Icons.play_arrow,
                             color: Colors.white,
+                            size: 40,
                           ),
                         ),
                       ),
