@@ -15,10 +15,12 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
   bool showAllButton = false;
   double volumnDefault = 0.75;
   double speed = 1;
+  late bool isStart;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    isStart = true;
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = VideoPlayerController.asset(
         'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
@@ -72,8 +74,6 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                             Visibility(
                               visible: _controller.value.isPlaying
                                   ? showAllButton
-                                      ? false
-                                      : true
                                   : true,
                               child: Container(
                                 height: 10,
@@ -109,7 +109,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Visibility(
-                    visible: showAllButton ? false : true,
+                    visible: showAllButton,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -142,17 +142,21 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                       ],
                     ),
                   ),
-                  Visibility(
-                    visible: showAllButton ? false : true,
-                    child: Row(
-                      children: [
-                        RotationTransition(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Visibility(
+                        visible: showAllButton,
+                        child: RotationTransition(
                             turns: new AlwaysStoppedAnimation(270 / 360),
                             child: Container(
                                 height: 20,
                                 child:
                                     Slider(value: 0.5, onChanged: (val) {}))),
-                        Container(
+                      ),
+                      Visibility(
+                        visible: showAllButton,
+                        child: Container(
                           margin: EdgeInsets.only(right: 20),
                           child: MaterialButton(
                             highlightColor: Colors.transparent,
@@ -167,15 +171,19 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                                 )),
                           ),
                         ),
-                        TextButton(
+                      ),
+                      Visibility(
+                        visible: isStart?true:showAllButton,
+                        child: TextButton(
                           onPressed: () {
                             setState(() {
                               if (_controller.value.isPlaying) {
                                 _controller.pause();
+                                showAllButton = true;
                               } else {
                                 _controller.play();
-                                showAllButton = true;
                               }
+                              isStart = false;
                             });
                           },
                           child: Container(
@@ -193,7 +201,10 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                             ),
                           ),
                         ),
-                        Container(
+                      ),
+                      Visibility(
+                        visible: showAllButton,
+                        child: Container(
                           margin: EdgeInsets.only(left: 20),
                           child: MaterialButton(
                             padding: EdgeInsets.all(0),
@@ -209,17 +220,20 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                                 )),
                           ),
                         ),
-                        RotationTransition(
+                      ),
+                      Visibility(
+                        visible: showAllButton,
+                        child: RotationTransition(
                             turns: new AlwaysStoppedAnimation(270 / 360),
                             child: Container(
                                 height: 20,
                                 child:
                                     Slider(value: 0.5, onChanged: (val) {}))),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Visibility(
-                    visible: showAllButton ? false : true,
+                    visible: showAllButton,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
