@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:unflix/controllers/mainposter_controller.dart';
 import 'package:unflix/core/data/listposter.dart';
+import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/film_information_screen.dart';
 import 'package:unflix/style/text_style.dart';
 import 'package:get/state_manager.dart';
@@ -137,7 +139,21 @@ class MainPoster extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        SystemChrome.setPreferredOrientations([
+                                          DeviceOrientation.landscapeLeft,
+                                          DeviceOrientation.landscapeRight
+                                        ]);
+                                        await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DisplayMovieSceen()));
+                                        SystemChrome.setPreferredOrientations([
+                                          DeviceOrientation.portraitDown,
+                                          DeviceOrientation.portraitUp
+                                        ]);
+                                      },
                                       child: Container(
                                         height: 46,
                                         width: 127,
