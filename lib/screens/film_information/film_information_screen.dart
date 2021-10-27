@@ -24,7 +24,13 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
     _controller.setLooping(true);
     _tabController = TabController(length: 2, vsync: this);
   }
-
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+    _tabController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
