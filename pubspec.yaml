@@ -48,6 +48,7 @@ dev_dependencies:
   get_state_manager: ^3.13.0
   get: ^4.3.8
   video_player:
+  screen:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
