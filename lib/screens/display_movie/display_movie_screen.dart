@@ -173,7 +173,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                         ),
                       ),
                       Visibility(
-                        visible: isStart?true:showAllButton,
+                        visible: isStart ? true : showAllButton,
                         child: TextButton(
                           onPressed: () {
                             setState(() {
@@ -223,12 +223,30 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                       ),
                       Visibility(
                         visible: showAllButton,
-                        child: RotationTransition(
-                            turns: new AlwaysStoppedAnimation(270 / 360),
-                            child: Container(
-                                height: 20,
-                                child:
-                                    Slider(value: 0.5, onChanged: (val) {}))),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.volume_up_outlined,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            RotationTransition(
+                              turns: new AlwaysStoppedAnimation(270 / 360),
+                              child: Container(
+                                  height: 160,
+                                  child: Slider(
+                                      activeColor: Colors.white,
+                                      inactiveColor: Colors.grey,
+                                      value: volumnDefault,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          volumnDefault = val;
+                                          _controller.setVolume(val);
+                                        });
+                                      })),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
