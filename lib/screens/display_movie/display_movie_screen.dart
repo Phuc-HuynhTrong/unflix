@@ -11,13 +11,18 @@ class DisplayMovieSceen extends StatefulWidget {
   _DisplayMovieSceenState createState() => _DisplayMovieSceenState();
 }
 
-class _DisplayMovieSceenState extends State<DisplayMovieSceen> with TickerProviderStateMixin {
+class _DisplayMovieSceenState extends State<DisplayMovieSceen>
+    with TickerProviderStateMixin {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   bool showAllButton = false;
   double volumnDefault = 0.75;
   double speed = 1;
   double brightness = 0.5;
+  bool isEditSpeed = false;
+  bool isLockScreen = false;
+  bool isShowChapter = false;
+  bool isEditSub = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -25,17 +30,19 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> with TickerProvid
     initPlatformState();
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = VideoPlayerController.asset(
-        'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
+        'assets/videos/TopGun.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _controller.play();
   }
+
   initPlatformState() async {
     double brightness = await Screen.brightness;
-    setState((){
+    setState(() {
       brightness = brightness;
     });
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -293,7 +300,12 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> with TickerProvid
                           padding: EdgeInsets.all(0),
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              showAllButton = false;
+                              isEditSpeed = true;
+                            });
+                          },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -379,6 +391,98 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> with TickerProvid
                   ),
                 ],
               ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Visibility(
+                  visible: isEditSpeed,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        color: Colors.black,
+                        height: MediaQuery.of(context).size.height / 6 + 10,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.height / 6 + 10,
+                              width: MediaQuery.of(context).size.width-90,
+                              child: Column(
+                                children: [
+                                  Slider(
+                                    divisions: 6,
+                                    min: 0.5,
+                                    max: 2,
+                                    activeColor: Colors.white,
+                                    inactiveColor: Colors.grey,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        speed = val;
+                                        _controller.setPlaybackSpeed(speed);
+                                      });
+                                    },
+                                    value: speed,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '0.5x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '0.75x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '1x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '1.25x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '1.5x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '1.75x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '2x',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isEditSpeed = false;
+                                    showAllButton = true;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.cancel_rounded,
+                                  color: Colors.white,
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             )
           ],
         ),

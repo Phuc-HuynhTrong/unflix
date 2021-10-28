@@ -19,7 +19,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
     // TODO: implement initState
     super.initState();
     _controller = VideoPlayerController.asset(
-        'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
+        'assets/videos/TopGun.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _tabController = TabController(length: 2, vsync: this);
