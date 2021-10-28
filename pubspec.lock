@@ -150,7 +150,7 @@ packages:
     source: hosted
     version: "1.8.0"
   screen:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: screen
       url: "https://pub.dartlang.org"

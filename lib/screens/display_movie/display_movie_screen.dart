@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:screen/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -11,16 +11,18 @@ class DisplayMovieSceen extends StatefulWidget {
   _DisplayMovieSceenState createState() => _DisplayMovieSceenState();
 }
 
-class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
+class _DisplayMovieSceenState extends State<DisplayMovieSceen> with TickerProviderStateMixin {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   bool showAllButton = false;
   double volumnDefault = 0.75;
   double speed = 1;
+  double brightness = 0.5;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    initPlatformState();
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = VideoPlayerController.asset(
         'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
@@ -28,7 +30,12 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
     _controller.setLooping(true);
     _controller.play();
   }
-
+  initPlatformState() async {
+    double brightness = await Screen.brightness;
+    setState((){
+      brightness = brightness;
+    });
+  }
   @override
   void dispose() {
     // TODO: implement dispose
@@ -148,12 +155,27 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                     children: [
                       Visibility(
                         visible: showAllButton,
-                        child: RotationTransition(
-                            turns: new AlwaysStoppedAnimation(270 / 360),
-                            child: Container(
-                                height: 20,
-                                child:
-                                    Slider(value: 0.5, onChanged: (val) {}))),
+                        child: Column(
+                          children: [
+                            Image.asset('assets/icons/Spinner.png'),
+                            RotationTransition(
+                              turns: new AlwaysStoppedAnimation(270 / 360),
+                              child: Container(
+                                  height: 160,
+                                  child: Slider(
+                                      divisions: 100,
+                                      activeColor: Colors.white,
+                                      inactiveColor: Colors.grey,
+                                      value: brightness,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          Screen.setBrightness(val);
+                                          brightness = val;
+                                        });
+                                      })),
+                            ),
+                          ],
+                        ),
                       ),
                       Visibility(
                         visible: showAllButton,
@@ -245,6 +267,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                               child: Container(
                                   height: 160,
                                   child: Slider(
+                                      divisions: 100,
                                       activeColor: Colors.white,
                                       inactiveColor: Colors.grey,
                                       value: volumnDefault,

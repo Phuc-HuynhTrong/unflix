@@ -77,7 +77,7 @@ class MainPoster extends StatelessWidget {
                                         Container(
                                           padding: EdgeInsets.all(1),
                                           margin: EdgeInsets.only(
-                                              left: 20, right: 10),
+                                              left: 10, right: 0),
                                           width: 23,
                                           height: 11,
                                           decoration: BoxDecoration(
@@ -216,21 +216,27 @@ class MainPoster extends StatelessWidget {
                             color: moviePosterController.currentPage == 0
                                 ? Colors.white
                                 : Colors.white38,
-                            size: 12,
+                            size: 8,
+                          ),
+                          SizedBox(
+                            width: 3,
                           ),
                           Icon(
                             Icons.circle,
                             color: moviePosterController.currentPage == 1
                                 ? Colors.white
                                 : Colors.white38,
-                            size: 12,
+                            size: 8,
+                          ),
+                          SizedBox(
+                            width: 3,
                           ),
                           Icon(
                             Icons.circle,
                             color: moviePosterController.currentPage == 2
                                 ? Colors.white
                                 : Colors.white38,
-                            size: 12,
+                            size: 8,
                           )
                         ],
                       ),
