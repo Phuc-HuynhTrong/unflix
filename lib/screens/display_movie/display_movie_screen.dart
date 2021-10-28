@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
@@ -15,17 +17,16 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
   bool showAllButton = false;
   double volumnDefault = 0.75;
   double speed = 1;
-  late bool isStart;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    isStart = true;
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = VideoPlayerController.asset(
         'assets/videos/THE-QUEEN_S-GAMBIT-Trailer-_2020_.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
+    _controller.play();
   }
 
   @override
@@ -161,7 +162,12 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                           child: MaterialButton(
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                _controller.seekTo(_controller.value.position -
+                                    Duration(seconds: 10));
+                              });
+                            },
                             child: Container(
                                 height: 40,
                                 width: 40,
@@ -173,7 +179,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                         ),
                       ),
                       Visibility(
-                        visible: isStart ? true : showAllButton,
+                        visible: showAllButton,
                         child: TextButton(
                           onPressed: () {
                             setState(() {
@@ -183,7 +189,6 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                               } else {
                                 _controller.play();
                               }
-                              isStart = false;
                             });
                           },
                           child: Container(
@@ -210,7 +215,12 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen> {
                             padding: EdgeInsets.all(0),
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                _controller.seekTo(_controller.value.position +
+                                    Duration(seconds: 10));
+                              });
+                            },
                             child: Container(
                                 height: 40,
                                 width: 40,
