@@ -2,17 +2,25 @@ import 'dart:async';
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unflix/core/data/listposter.dart';
+import 'package:unflix/screens/display_movie/listChapter.dart';
 import 'package:video_player/video_player.dart';
 
-class DisplayMovieSceen extends StatefulWidget {
-  const DisplayMovieSceen({Key? key}) : super(key: key);
-
+class DisplayMovieScreen extends StatefulWidget {
+  final String assetVideo;
+  final bool isSingleFlim;
+  DisplayMovieScreen({
+    Key? key,
+    required this.assetVideo,
+    required this.isSingleFlim,
+  }) : super(key: key);
   @override
-  _DisplayMovieSceenState createState() => _DisplayMovieSceenState();
+  _DisplayMovieScreenState createState() => _DisplayMovieScreenState();
 }
 
-class _DisplayMovieSceenState extends State<DisplayMovieSceen>
+class _DisplayMovieScreenState extends State<DisplayMovieScreen>
     with TickerProviderStateMixin {
+  ListPoster listPoster = ListPoster();
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   bool showAllButton = false;
@@ -23,15 +31,15 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
   bool isLockScreen = false;
   bool isShowChapter = false;
   bool isEditSub = false;
+  bool canPressed = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     initPlatformState();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    _controller = VideoPlayerController.asset(
-        'assets/videos/TopGun.mp4');
-    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller = new VideoPlayerController.asset(widget.assetVideo);
+    _initializeVideoPlayerFuture =  _controller.initialize();
     _controller.setLooping(true);
     _controller.play();
   }
@@ -68,10 +76,17 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                     setState(() {
                       showAllButton = false;
                     });
-                  } else
-                    setState(() {
-                      showAllButton = true;
-                    });
+                  } else {
+                    if (canPressed == true)
+                      setState(() {
+                        showAllButton = true;
+                      });
+                    if (isShowChapter == true)
+                      setState(() {
+                        isShowChapter = false;
+                        canPressed = true;
+                      });
+                  }
                 });
               },
               child: Container(
@@ -144,7 +159,11 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                           ),
                         ),
                         TextButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              await SystemChrome.setPreferredOrientations([
+                                DeviceOrientation.portraitDown,
+                                DeviceOrientation.portraitUp
+                              ]);
                               Navigator.pop(context);
                             },
                             child: Text(
@@ -304,6 +323,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                             setState(() {
                               showAllButton = false;
                               isEditSpeed = true;
+                              canPressed = false;
                             });
                           },
                           child: Row(
@@ -322,7 +342,13 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                           padding: EdgeInsets.all(0),
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              showAllButton = false;
+                              canPressed = false;
+                              isLockScreen = true;
+                            });
+                          },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -339,7 +365,13 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                           padding: EdgeInsets.all(0),
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              canPressed = false;
+                              showAllButton = false;
+                              isShowChapter = true;
+                            });
+                          },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -410,8 +442,9 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              height: MediaQuery.of(context).size.height / 6 + 10,
-                              width: MediaQuery.of(context).size.width-90,
+                              height:
+                                  MediaQuery.of(context).size.height / 6 + 10,
+                              width: MediaQuery.of(context).size.width - 90,
                               child: Column(
                                 children: [
                                   Slider(
@@ -470,6 +503,7 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                                   setState(() {
                                     isEditSpeed = false;
                                     showAllButton = true;
+                                    canPressed = true;
                                   });
                                 },
                                 icon: Icon(
@@ -479,6 +513,84 @@ class _DisplayMovieSceenState extends State<DisplayMovieSceen>
                           ],
                         ),
                       ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Visibility(
+                  visible: isLockScreen,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MaterialButton(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onPressed: () {
+                          setState(() {
+                            isLockScreen = false;
+                            showAllButton = false;
+                            canPressed = true;
+                          });
+                        },
+                        child: Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.white38,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Icon(
+                              Icons.lock,
+                              color: Colors.black,
+                              size: 40,
+                            )),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Visibility(
+                  visible: isShowChapter,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        padding: EdgeInsets.all(0),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onPressed: () {
+                          setState(() {
+                            isShowChapter = false;
+                            showAllButton = true;
+                            canPressed = true;
+                          });
+                        },
+                        child: Container(
+                            color: Colors.black,
+                            height: 230,
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: ListChapter(
+                                    list: listPoster.listContinue,
+                                  ),
+                                ),
+                              ],
+                            )),
+                      )
                     ],
                   ),
                 )

@@ -148,11 +148,10 @@ class MainPoster extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    DisplayMovieSceen()));
-                                        SystemChrome.setPreferredOrientations([
-                                          DeviceOrientation.portraitDown,
-                                          DeviceOrientation.portraitUp
-                                        ]);
+                                                    DisplayMovieScreen(
+                                                      assetVideo: 'assets/videos/TopGun.mp4',
+                                                      isSingleFlim: false,
+                                                    )));
                                       },
                                       child: Container(
                                         height: 46,
