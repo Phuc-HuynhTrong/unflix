@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unflix/home.dart';
 import 'package:unflix/screens/profile_screen/delete_all_download_screen.dart';
 import 'package:unflix/screens/profile_screen/use_mobile_data_screen.dart';
 import 'package:unflix/screens/profile_screen/video_quality_screen.dart';
@@ -97,8 +96,8 @@ class CustomListTileNavigate extends StatelessWidget {
             context, MaterialPageRoute(builder: (_) => navigateToScreen));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 2.0),
-        height: 70.0,
+        margin: EdgeInsets.symmetric(vertical: 1.0),
+        height: 80.0,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
@@ -112,6 +111,7 @@ class CustomListTileNavigate extends StatelessWidget {
               width: 20.0,
             ),
             Expanded(
+              flex: 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -121,9 +121,11 @@ class CustomListTileNavigate extends StatelessWidget {
                     style: kLTTile,
                   ),
                   if (subtitle != '')
-                    Text(
-                      subtitle,
-                      style: kLTSubtitle,
+                    Flexible(
+                      child: Text(
+                        subtitle,
+                        style: kLTSubtitle,
+                      ),
                     ),
                 ],
               ),
@@ -172,7 +174,7 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 1.0),
-        height: 70.0,
+        height: 80.0,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
@@ -195,9 +197,12 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
                     style: kLTTile,
                   ),
                   if (widget.subtitle != '')
-                    Text(
-                      widget.subtitle,
-                      style: kLTSubtitle,
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Text(
+                        widget.subtitle,
+                        style: kLTSubtitle,
+                      ),
                     ),
                 ],
               ),

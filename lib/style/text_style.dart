@@ -23,5 +23,5 @@ final kLTTile = TextStyle(
 final kLTSubtitle = TextStyle(
   fontWeight: FontWeight.w400,
   color: Color.fromARGB(255, 122, 122, 122),
-  fontSize: 15.0,
+  fontSize: 14.0,
 );

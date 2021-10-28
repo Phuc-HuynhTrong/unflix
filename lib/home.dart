@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/incoming_screen/incoming_screen.dart';
 import 'package:unflix/screens/profile_screen/profile_screen.dart';
 
 class Home extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> {
           child: index == 0
               ? HomePageScreen()
               : index == 1
-                  ? Container()
+                  ? IncomingScreen()
                   : index == 2
                       ? Container()
                       : ProfileScreen(),
