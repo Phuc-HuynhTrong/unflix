@@ -405,7 +405,21 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           padding: EdgeInsets.all(0),
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) {
+                                      SystemChrome.setPreferredOrientations([
+                                        DeviceOrientation.landscapeLeft,
+                                        DeviceOrientation.landscapeRight
+                                      ]);
+                                      return DisplayMovieScreen(
+                                          assetVideo:
+                                          'assets/videos/EternalsTrailers.mp4',
+                                          isSingleFlim: false);
+                                    }));
+                          },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
