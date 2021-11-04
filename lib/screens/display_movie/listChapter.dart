@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
-import 'package:unflix/style/text_style.dart';
+
 
 class ListChapter extends StatefulWidget {
   final List<AssetImage> list;

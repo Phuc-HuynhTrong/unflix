@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:unflix/core/data/ListInformationFilm.dart';
+import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/bottom_tap_bar.dart';
 import 'package:unflix/screens/film_information/score_row.dart';
 import 'package:video_player/video_player.dart';
@@ -164,7 +166,20 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                       color: Color(0xffF6C700),
                       borderRadius: BorderRadius.circular(5)),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      SystemChrome.setPreferredOrientations([
+                        DeviceOrientation.landscapeLeft,
+                        DeviceOrientation.landscapeRight
+                      ]);
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DisplayMovieScreen(
+                                    assetVideo: 'assets/videos/TopGun.mp4',
+                                    isSingleFlim: false,
+                                  )));
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -188,7 +188,9 @@ class MainPoster extends StatelessWidget {
                                     width: 5,
                                     margin: EdgeInsets.only(right: 20),
                                     child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+
+                                        },
                                         child: Icon(
                                           Icons.more_vert_rounded,
                                           color: Colors.white,

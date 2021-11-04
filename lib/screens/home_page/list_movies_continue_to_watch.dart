@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 
 class ListMovieContinueToWatch extends StatefulWidget {
   final List<AssetImage> list;
@@ -38,7 +40,20 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                               fit: BoxFit.fill,
                             )),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              SystemChrome.setPreferredOrientations([
+                                DeviceOrientation.landscapeLeft,
+                                DeviceOrientation.landscapeRight
+                              ]);
+                              await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DisplayMovieScreen(
+                                            assetVideo: 'assets/videos/TopGun.mp4',
+                                            isSingleFlim: false,
+                                          )));
+                            },
                             icon: Icon(
                               Icons.play_circle_outline_rounded,
                               color: Colors.white,
