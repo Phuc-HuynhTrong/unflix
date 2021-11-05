@@ -92,7 +92,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'The loai',
+                                          'Thể loại',
                                           style: textInApp.headline6(
                                               Colors.white, context),
                                         ),
@@ -102,7 +102,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                         )
                                       ],
                                     ),
-                                    color: Colors.transparent,
                                     itemBuilder: (context) => [
                                           PopupMenuItem<int>(
                                             value: 0,
@@ -115,7 +114,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           PopupMenuItem<int>(
                                             value: 1,
                                             child: Text(
-                                              "Vien tuong",
+                                              "Viễn tưởng",
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -123,7 +122,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           PopupMenuItem<int>(
                                             value: 2,
                                             child: Text(
-                                              "Tinh cam",
+                                              "Tình cảm",
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -131,7 +130,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           PopupMenuItem<int>(
                                             value: 3,
                                             child: Text(
-                                              "Phieu luu",
+                                              "Phiêu lưu",
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -139,7 +138,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           PopupMenuItem<int>(
                                             value: 4,
                                             child: Text(
-                                              "Kinh di",
+                                              "Kinh dị",
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -147,7 +146,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           PopupMenuItem<int>(
                                             value: 5,
                                             child: Text(
-                                              "Phim truyen hinh",
+                                              "Phim ma",
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -227,7 +226,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'The loai',
+                                              'Thê loại',
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -237,7 +236,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                             )
                                           ],
                                         ),
-                                        color: Colors.transparent,
                                         itemBuilder: (context) => [
                                               PopupMenuItem<int>(
                                                 value: 0,
@@ -250,7 +248,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 1,
                                                 child: Text(
-                                                  "Vien tuong",
+                                                  "Viễn tưởng",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -258,7 +256,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 2,
                                                 child: Text(
-                                                  "Tinh cam",
+                                                  "Tình cảm",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -266,7 +264,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 3,
                                                 child: Text(
-                                                  "Phieu luu",
+                                                  "Phiêu lưu",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -274,7 +272,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 4,
                                                 child: Text(
-                                                  "Kinh di",
+                                                  "Kinh dị",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -282,7 +280,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 5,
                                                 child: Text(
-                                                  "Phim truyen hinh",
+                                                  "Phim ma",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -361,7 +359,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'The loai',
+                                              'Thể loại',
                                               style: textInApp.headline6(
                                                   Colors.white, context),
                                             ),
@@ -371,7 +369,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                             )
                                           ],
                                         ),
-                                        color: Colors.transparent,
                                         itemBuilder: (context) => [
                                               PopupMenuItem<int>(
                                                 value: 0,
@@ -384,7 +381,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 1,
                                                 child: Text(
-                                                  "Vien tuong",
+                                                  "Viễn tưởng",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -392,7 +389,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 2,
                                                 child: Text(
-                                                  "Tinh cam",
+                                                  "Tình cảm",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -400,7 +397,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 3,
                                                 child: Text(
-                                                  "Phieu luu",
+                                                  "Phiêu lưu",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -408,7 +405,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 4,
                                                 child: Text(
-                                                  "Kinh di",
+                                                  "Kinh dị",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),
@@ -416,7 +413,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                               PopupMenuItem<int>(
                                                 value: 5,
                                                 child: Text(
-                                                  "Phim truyen hinh",
+                                                  "Phim ma",
                                                   style: textInApp.headline6(
                                                       Colors.white, context),
                                                 ),

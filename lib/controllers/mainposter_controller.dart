@@ -6,10 +6,12 @@ class MoviePosterController extends GetxController
   late AnimationController _animationController;
   late Animation _animation;
   late PageController pageController ;
+  RxInt _currentPage = 1.obs;
   int page = 0;
   @override
 
   void onInit() {
+    _currentPage.value = 0;
     pageController = PageController();
     _animationController =
         AnimationController(duration: Duration(seconds: 5), vsync: this);
@@ -29,7 +31,6 @@ class MoviePosterController extends GetxController
     pageController.dispose();
     print('close controller');
   }
-  RxInt _currentPage = 1.obs;
   RxInt get currentPage => this._currentPage;
   void chanePagecurrent(int index )
   {
