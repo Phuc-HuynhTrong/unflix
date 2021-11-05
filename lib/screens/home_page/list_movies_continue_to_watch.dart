@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
+import 'package:unflix/screens/film_information/film_information_screen.dart';
 
 class ListMovieContinueToWatch extends StatefulWidget {
   final List<AssetImage> list;
@@ -48,9 +49,9 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                               await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          DisplayMovieScreen(
-                                            assetVideo: 'assets/videos/TopGun.mp4',
+                                      builder: (context) => DisplayMovieScreen(
+                                            assetVideo:
+                                                'assets/videos/TopGun.mp4',
                                             isSingleFlim: false,
                                           )));
                             },
@@ -74,7 +75,13 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FilmInformationScreen()));
+                                },
                                 icon: Icon(
                                   Icons.error_outline,
                                   color: Colors.white,

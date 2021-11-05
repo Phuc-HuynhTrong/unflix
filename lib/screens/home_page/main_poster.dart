@@ -10,13 +10,16 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class MainPoster extends StatelessWidget {
-  const MainPoster({Key? key}) : super(key: key);
+  final List<MainPosterModel> listPoster;
+  const MainPoster({
+    Key? key,
+    required this.listPoster,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     MoviePosterController moviePosterController =
         Get.put(MoviePosterController());
-    ListPoster listPoster = ListPoster();
     TextInApp textInApp = TextInApp();
     return Container(
         height: 570,
@@ -47,7 +50,7 @@ class MainPoster extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                          image: listPoster.listMainPoster[index].poster,
+                          image: listPoster[index].poster,
                           fit: BoxFit.fill,
                         )),
                         child: Container(
@@ -66,9 +69,7 @@ class MainPoster extends StatelessWidget {
                                     Row(
                                       children: [
                                         Container(
-                                          child: Text(
-                                              listPoster
-                                                  .listMainPoster[index].name,
+                                          child: Text(listPoster[index].name,
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.white,
@@ -95,8 +96,8 @@ class MainPoster extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               Text(
-                                                listPoster
-                                                    .listMainPoster[index].imdb
+                                                listPoster[index]
+                                                    .imdb
                                                     .toString(),
                                                 style: TextStyle(
                                                     color: Colors.white,
@@ -125,8 +126,7 @@ class MainPoster extends StatelessWidget {
                                       width: MediaQuery.of(context).size.width -
                                           190,
                                       child: Text(
-                                        listPoster
-                                            .listMainPoster[index].description,
+                                        listPoster[index].description,
                                         style: textInApp.subtitle(
                                             Colors.white, context),
                                       ),
@@ -149,7 +149,8 @@ class MainPoster extends StatelessWidget {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     DisplayMovieScreen(
-                                                      assetVideo: 'assets/videos/TopGun.mp4',
+                                                      assetVideo:
+                                                          'assets/videos/TopGun.mp4',
                                                       isSingleFlim: false,
                                                     )));
                                       },
@@ -188,9 +189,7 @@ class MainPoster extends StatelessWidget {
                                     width: 5,
                                     margin: EdgeInsets.only(right: 20),
                                     child: TextButton(
-                                        onPressed: () {
-
-                                        },
+                                        onPressed: () {},
                                         child: Icon(
                                           Icons.more_vert_rounded,
                                           color: Colors.white,
