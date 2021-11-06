@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unflix/screens/downloaded_screens/DownLoadedScreen.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/search_screens/search_main_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -26,10 +28,10 @@ class _HomeState extends State<Home> {
           child: index == 0
               ? HomePageScreen()
               : index == 1
-              ? Container()
-              : index == 2
-              ? Container()
-              : Container(),
+                  ? Container()
+                  : index == 2
+                      ? SearchMainScreen()
+                      : DownloadedScreen(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.transparent,
@@ -71,4 +73,3 @@ class _HomeState extends State<Home> {
         ));
   }
 }
-

@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        // Màu chính
+          // Màu chính
           primaryColor: const Color(0xffF6C700),
 
           // Màu nền
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
           // Màu của dòng chữ phụ hoặc chữ trên nền background của cardColor.
           //hintColor: const Color(0xff9C9C9C),
           hintColor: const Color(0xff595959),
-
           fontFamily: 'Noto Sans'),
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
