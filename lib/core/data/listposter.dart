@@ -75,3 +75,6 @@ class MainPosterModel {
     this.imdb = imdb;
   }
 }
+
+List<AssetImage> favouriteList =
+    List.filled(10, AssetImage('assets/images/stpng.png'));
