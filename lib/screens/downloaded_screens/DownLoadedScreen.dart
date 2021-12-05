@@ -63,7 +63,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
         title: Text(
           'Tải xuống',
           style: TextStyle(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800),
+              color: Colors.white, fontSize: 24, fontWeight: FontWeight.w800),
         ),
         actions: [
           Container(

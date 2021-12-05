@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unflix/screens/downloaded_screens/DownLoadedScreen.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
+import 'package:unflix/screens/incoming_screens/IncomingNewFeedScreen.dart';
 import 'package:unflix/screens/search_screens/search_main_screen.dart';
 
 class Home extends StatefulWidget {
@@ -29,7 +30,7 @@ class _HomeState extends State<Home> {
           child: index == 0
               ? HomePageScreen()
               : index == 1
-                  ? Container()
+                  ? InComingNewFeedScreen()
                   : index == 2
                       ? SearchMainScreen()
                       : DownloadedScreen(),
