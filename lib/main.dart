@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/home.dart';
+import 'package:unflix/screens/auth_screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           hintColor: const Color(0xff595959),
           fontFamily: 'Noto Sans'),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: LoginScreen(),
     );
   }
 }

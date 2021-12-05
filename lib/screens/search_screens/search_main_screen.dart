@@ -76,8 +76,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
             ),
           ),
           if (!isSearched)
-            Container(
-              height: size.height - 148,
+            Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
@@ -317,8 +316,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
               ),
             ),
           if (isSearched)
-            Container(
-              height: size.height - 148,
+            Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
