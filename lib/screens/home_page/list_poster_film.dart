@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unflix/screens/film_information/film_information_screen.dart';
 
 class ListScrollPoster extends StatefulWidget {
   final List<AssetImage> list;
@@ -19,8 +20,14 @@ class _ListScrollPosterState extends State<ListScrollPoster> {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) => MaterialButton(
-                  padding: EdgeInsets.symmetric(horizontal: 6),
-                  onPressed: () {},
+                  padding: EdgeInsets.only(right: 12),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                FilmInformationScreen()));
+                  },
                   child: Container(
                     //margin: EdgeInsets.only(right: 12),
                     height: 167,

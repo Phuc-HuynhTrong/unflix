@@ -6,10 +6,12 @@ class MoviePosterController extends GetxController
   late AnimationController _animationController;
   late Animation _animation;
   late PageController pageController ;
-  int page = 3;
+  RxInt _currentPage = 1.obs;
+  int page = 0;
   @override
 
   void onInit() {
+    _currentPage.value = 0;
     pageController = PageController();
     _animationController =
         AnimationController(duration: Duration(seconds: 5), vsync: this);
@@ -29,19 +31,24 @@ class MoviePosterController extends GetxController
     pageController.dispose();
     print('close controller');
   }
-  RxInt _currentPage = 1.obs;
   RxInt get currentPage => this._currentPage;
-
+  void chanePagecurrent(int index )
+  {
+    _currentPage.value = index;
+    page = index;
+    _animationController.reset();
+    _animationController.forward().whenComplete(() => nextMovie());
+  }
   nextMovie() {
-    if (page > 1) {
+    if (page < 2) {
       pageController.nextPage(
           duration: Duration(milliseconds: 250), curve: Curves.ease);
       _animationController.reset();
       _animationController.forward().whenComplete(() => nextMovie());
-      _currentPage.value = 5-page;
-      page -= 1;
+      _currentPage.value = page +1;
+      page += 1;
     } else {
-      page = 3;
+      page = 0;
       _currentPage.value = 1;
       _animationController.reset();
       _animationController.forward().whenComplete(() => nextMovie());

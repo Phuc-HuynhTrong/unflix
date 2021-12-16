@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unflix/screens/downloaded_screens/DownLoadedScreen.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
 import 'package:unflix/screens/incoming_screens/IncomingNewFeedScreen.dart';
 import 'package:unflix/screens/search_screens/search_main_screen.dart';
+import 'package:unflix/screens/incoming_screen/incoming_screen.dart';
+import 'package:unflix/screens/profile_screen/profile_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,8 +15,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int index = 0;
-
-  @override
   void onTapedTap(int id) {
     setState(() {
       index = id;
@@ -30,10 +29,11 @@ class _HomeState extends State<Home> {
           child: index == 0
               ? HomePageScreen()
               : index == 1
-                  ? InComingNewFeedScreen()
+
+                  ? IncomingScreen()
                   : index == 2
                       ? SearchMainScreen()
-                      : DownloadedScreen(),
+                      : ProfileScreen(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.transparent,
@@ -61,9 +61,9 @@ class _HomeState extends State<Home> {
                   //color: Colors.white,
                 )),
             BottomNavigationBarItem(
-                label: "Tệp tải xuống",
+                label: "Cá nhân",
                 icon: Icon(
-                  Icons.download,
+                  Icons.person_outline_sharp,
                   size: 30,
                   //color: Colors.white,
                 )),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:unflix/screens/display_movie/display_movie_screen.dart';
+import 'package:unflix/screens/film_information/film_information_screen.dart';
 
 class ListMovieContinueToWatch extends StatefulWidget {
   final List<AssetImage> list;
@@ -15,6 +18,7 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
     return Container(
         height: 207,
         width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -37,7 +41,20 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                               fit: BoxFit.fill,
                             )),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              SystemChrome.setPreferredOrientations([
+                                DeviceOrientation.landscapeLeft,
+                                DeviceOrientation.landscapeRight
+                              ]);
+                              await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DisplayMovieScreen(
+                                            assetVideo:
+                                                'assets/videos/TopGun.mp4',
+                                            isSingleFlim: false,
+                                          )));
+                            },
                             icon: Icon(
                               Icons.play_circle_outline_rounded,
                               color: Colors.white,
@@ -58,7 +75,13 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FilmInformationScreen()));
+                                },
                                 icon: Icon(
                                   Icons.error_outline,
                                   color: Colors.white,
