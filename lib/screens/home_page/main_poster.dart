@@ -40,11 +40,12 @@ class MainPoster extends StatelessWidget {
                 height: 550,
                 width: MediaQuery.of(context).size.width,
                 child: PageView.builder(
+                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  itemCount: listPoster.length,
                     onPageChanged: (int index) {
                       moviePosterController.chanePagecurrent(index);
                     },
                     controller: moviePosterController.pageController,
-                    itemCount: 3,
                     itemBuilder: (context, index) {
                       return Container(
                         height: 550,

@@ -1,64 +1,82 @@
 import 'package:flutter/material.dart';
 
 class ListPoster {
-  List<MainPosterModel> listFilm = [];
-  List<MainPosterModel> listTvSeries =[];
-  List<AssetImage> listPopular =
-      List.filled(10, AssetImage('assets/images/stpng.png'));
-  List<AssetImage> listContinue =
-      List.filled(10, AssetImage('assets/images/lovedeath.jpeg'));
-  List<AssetImage> listUSUK =
-      List.filled(10, AssetImage('assets/images/peakyblinders.jpg'));
-  List<MainPosterModel> listMainPoster = [];
-  ListPoster() {
 
-    listUSUK[1] = AssetImage('assets/images/prisonbreak.png');
-    listUSUK[2] = AssetImage('assets/images/mrrobot.png');
-    listMainPoster.add(MainPosterModel(
+  List<MainPosterModel> listMainPoster = [
+    MainPosterModel(
         'GAMBIT HẬU',
-        AssetImage('assets/images/PosterGambitHau.jpeg'),
-        'Kìa con bướm vàng, kìa con bướm vàng',
-        8.6));
-    listMainPoster.add(MainPosterModel(
+        const AssetImage('assets/images/PosterGambitHau.jpeg'),
+        'Chính kịch, Trí tuệ, Xúc động',
+        8.6),
+    MainPosterModel(
         'PRISON BREAK',
-        AssetImage('assets/images/prisonbreak.png'),
-        'Xòe đôi cánh, xòe đôi cánh',
-        6.7));
-    listMainPoster.add(MainPosterModel(
-        'MR.ROBOT',
-        AssetImage('assets/images/mrrobot.png'),
-        'Bướm bướm bay đôi ba vòng',
-        7.5));
-    listFilm.add(MainPosterModel(
-        'BỐ GIÀ',
-        AssetImage('assets/images/bogia.jpg'),
-        'Big city, big city boi',
-        8.6));
-    listFilm.add(MainPosterModel(
-        'Mắc biếc',
-        AssetImage('assets/images/matbiec.jpg'),
-        'Thả tim đầy story em',
-        6.7));
-    listFilm.add(MainPosterModel(
-        'PRISON BREAK',
-        AssetImage('assets/images/prisonbreak.png'),
-        'Xòe đôi cánh, xòe đôi cánh',
-        6.7));
-    listTvSeries.add(MainPosterModel(
-        'NGƯỜI PHAN XỬ',
-        AssetImage('assets/images/nguoiphanxu.jpg'),
-        'Trói em bằng cà vạt',
-        8.6));
-    listTvSeries.add(MainPosterModel(
-        'VỀ NHÀ ĐI CON',
-        AssetImage('assets/images/venhadicon.png'),
-        'Penhouse trên Đà Lạt',
-        6.7));
-    listTvSeries.add(MainPosterModel(
+        const AssetImage('assets/images/prisonbreak.png'),
+        'Tội phạm, Hành động, Giật gân',
+        8.3),
+    MainPosterModel(
+        'US',
+        const AssetImage('assets/images/us.jpg'),
+        'Tâm lý, Kinh dị, Giật gân',
+        6.8),
+  ];
+  List<MainPosterModel> listFilm = [
+    MainPosterModel(
+        'US',
+        const AssetImage('assets/images/us.jpg'),
+        'Tâm lý, Kinh dị, Giật gân',
+        6.8),
+    MainPosterModel(
+        'JOHN WICK 2',
+        const AssetImage('assets/images/johnwick.jpg'),
+        'Hành động, Tội phạm, Giật gân',
+        7.5),
+    MainPosterModel(
+        'VENOM 2',
+        const AssetImage('assets/images/venom_2.jpeg'),
+        'Hành động, Kinh dị, Giật gân',
+        6.0),
+  ];
+  List<MainPosterModel> listTvSeries =[
+    MainPosterModel(
         'GAMBIT HẬU',
-        AssetImage('assets/images/PosterGambitHau.jpeg'),
-        'Kìa con bướm vàng',
-        6.7));
+        const AssetImage('assets/images/PosterGambitHau.jpeg'),
+        'Chính kịch, Trí tuệ, Xúc động',
+        8.6),
+    MainPosterModel(
+        'PRISON BREAK',
+        const AssetImage('assets/images/prisonbreak.png'),
+        'Tội phạm, Hành động, Giật gân',
+        8.3),
+    MainPosterModel(
+        'BILLIONS',
+        const AssetImage('assets/images/billions.jpg'),
+        'Chính kịch',
+        8.4),
+  ];
+  List<AssetImage> listPopular = [
+    const AssetImage('assets/images/1.jpg'),
+    const AssetImage('assets/images/2.jpg'),
+    const AssetImage('assets/images/3.jpg'),
+    const AssetImage('assets/images/5.jpg'),
+    const AssetImage('assets/images/6.jpg'),
+    const AssetImage('assets/images/9.jpg'),
+  ];
+  List<AssetImage> listContinue = [
+    const AssetImage('assets/images/venom.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+    const AssetImage('assets/images/thetomorrowwar.jpg'),
+    const AssetImage('assets/images/trangquynh.jpg'),
+    const AssetImage('assets/images/trangti.jpg'),
+  ];
+  List<AssetImage> listUSUK = [
+    const AssetImage('assets/images/mrrobot.png'),
+    const AssetImage('assets/images/lovedeath.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+  ];
+
+  ListPoster() {
+    // listUSUK[1] = AssetImage('assets/images/prisonbreak.png');
+    // listUSUK[2] = AssetImage('assets/images/mrrobot.png');
   }
 }
 

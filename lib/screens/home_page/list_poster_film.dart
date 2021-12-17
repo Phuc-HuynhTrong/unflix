@@ -19,7 +19,7 @@ class _ListScrollPosterState extends State<ListScrollPoster> {
         child: ListView.builder(
             physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: widget.list.length,
             itemBuilder: (context, index) => MaterialButton(
                   padding: EdgeInsets.only(right: 12),
                   onPressed: () {

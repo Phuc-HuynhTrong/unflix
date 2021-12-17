@@ -24,7 +24,7 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
         child: ListView.builder(
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: widget.list.length,
             itemBuilder: (context, index) => Container(
                   margin: EdgeInsets.only(right: 12),
                   height: 207,
