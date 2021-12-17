@@ -12,6 +12,10 @@ class TextInApp {
   TextStyle headline6(Color color, BuildContext context) {
     return TextStyle(color: color, fontSize: 15, fontWeight: FontWeight.w500);
   }
+
+  TextStyle navigation(Color color, BuildContext context) {
+    return TextStyle(color: color, fontSize: 15, fontWeight: FontWeight.w600);
+  }
 }
 
 final kLTTile = TextStyle(

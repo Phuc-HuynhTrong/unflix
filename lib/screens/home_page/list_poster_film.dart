@@ -17,6 +17,7 @@ class _ListScrollPosterState extends State<ListScrollPoster> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         child: ListView.builder(
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) => MaterialButton(

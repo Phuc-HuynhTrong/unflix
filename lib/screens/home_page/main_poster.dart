@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:unflix/controllers/mainposter_controller.dart';
 import 'package:unflix/core/data/listposter.dart';
+import 'package:unflix/core/models/SuperIcon.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/film_information_screen.dart';
 import 'package:unflix/style/text_style.dart';
@@ -11,6 +12,7 @@ import 'package:get/get.dart';
 
 class MainPoster extends StatelessWidget {
   final List<MainPosterModel> listPoster;
+
   const MainPoster({
     Key? key,
     required this.listPoster,
@@ -22,10 +24,9 @@ class MainPoster extends StatelessWidget {
         Get.put(MoviePosterController());
     TextInApp textInApp = TextInApp();
     return Container(
-        height: 570,
         width: MediaQuery.of(context).size.width,
         child: MaterialButton(
-          padding: EdgeInsets.all(0),
+          padding: EdgeInsets.only(bottom: 8),
           onPressed: () {
             Navigator.push(
                 context,
@@ -35,7 +36,7 @@ class MainPoster extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.all(1),
+                margin: const EdgeInsets.all(1),
                 height: 550,
                 width: MediaQuery.of(context).size.width,
                 child: PageView.builder(
@@ -54,91 +55,94 @@ class MainPoster extends StatelessWidget {
                           fit: BoxFit.fill,
                         )),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          alignment: Alignment.bottomLeft,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width - 190,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.55,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.end,
                                       children: [
-                                        Container(
-                                          child: Text(listPoster[index].name,
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w800)),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.all(1),
-                                          margin: EdgeInsets.only(
-                                              left: 10, right: 0),
-                                          width: 23,
-                                          height: 11,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffF6C700),
-                                          ),
+                                        Flexible(
                                           child: Text(
-                                            'IMDb',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 8,
-                                                fontWeight: FontWeight.w800),
+                                            listPoster[index].name,
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                                fontWeight:
+                                                FontWeight.w800),
                                           ),
                                         ),
-                                        Container(
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                listPoster[index]
-                                                    .imdb
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w800),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              padding:
+                                              const EdgeInsets.only(
+                                                  left: 8, right: 4),
+                                              height: 12,
+                                              child: Image.asset(
+                                                'assets/icons/imdb.png',
                                               ),
-                                              Text(
-                                                '/10 ',
-                                                style: TextStyle(
+                                            ),
+                                            Text(
+                                              listPoster[index]
+                                                  .imdb
+                                                  .toString(),
+                                              style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 12,
-                                                ),
+                                                  fontSize: 15,
+                                                  fontWeight:
+                                                  FontWeight.w800),
+                                            ),
+                                            const Text(
+                                              '/10 ',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
                                               ),
-                                              Icon(
-                                                Icons.star,
-                                                color: Color(0xffF6C700),
-                                                size: 11,
-                                              )
-                                            ],
-                                          ),
-                                        )
+                                            ),
+                                            const Icon(
+                                              Icons.star,
+                                              color: Color(0xffF6C700),
+                                              size: 11,
+                                            )
+                                          ],
+                                        ),
                                       ],
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width -
-                                          190,
-                                      child: Text(
-                                        listPoster[index].description,
-                                        style: textInApp.subtitle(
-                                            Colors.white, context),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                  SizedBox(
+                                    height: 2,
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.55,
+                                    alignment: Alignment.bottomLeft,
+                                    child: Text(
+                                      listPoster[index].description,
+                                      style: textInApp.subtitle(
+                                          Colors.white, context),
+                                    ),
+                                  )
+                                ],
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  TextButton(
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.38,
+                                child: Row(
+                                  children: [
+                                    TextButton(
                                       onPressed: () async {
                                         SystemChrome.setPreferredOrientations([
                                           DeviceOrientation.landscapeLeft,
@@ -155,11 +159,8 @@ class MainPoster extends StatelessWidget {
                                                     )));
                                       },
                                       child: Container(
-                                        height: 46,
-                                        width: 127,
-                                        padding:
-                                            EdgeInsets.fromLTRB(10, 10, 0, 10),
-                                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 28, vertical: 10),
                                         decoration: BoxDecoration(
                                             color: Color(0xffF6C700),
                                             borderRadius:
@@ -172,30 +173,38 @@ class MainPoster extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: [
                                             Icon(
-                                              Icons.play_arrow,
+                                              Icons.play_arrow_rounded,
                                               color: Colors.black,
-                                              size: 28,
+                                              size: 24,
                                             ),
-                                            Text(' Phát',
+                                            SizedBox(
+                                              width: 4,
+                                            ),
+                                            Text('Phát',
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.w800)),
+                                            SizedBox(
+                                              width: 4,
+                                            ),
                                           ],
                                         ),
-                                      )),
-                                  Container(
-                                    width: 5,
-                                    margin: EdgeInsets.only(right: 20),
-                                    child: TextButton(
-                                        onPressed: () {},
-                                        child: Icon(
-                                          Icons.more_vert_rounded,
-                                          color: Colors.white,
-                                        )),
-                                  )
-                                ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 2,
+                                      child: IconButton(
+                                          padding: EdgeInsets.zero,
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.more_vert_rounded,
+                                            color: Colors.white,
+                                          )),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -203,8 +212,9 @@ class MainPoster extends StatelessWidget {
                       );
                     }),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 1),
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                margin: const EdgeInsets.symmetric(vertical: 4),
                 child: Obx(() => Container(
                       height: 1,
                       margin: EdgeInsets.only(top: 10),
@@ -218,7 +228,7 @@ class MainPoster extends StatelessWidget {
                                 : Colors.white38,
                             size: 8,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
                           Icon(
@@ -228,7 +238,7 @@ class MainPoster extends StatelessWidget {
                                 : Colors.white38,
                             size: 8,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
                           Icon(

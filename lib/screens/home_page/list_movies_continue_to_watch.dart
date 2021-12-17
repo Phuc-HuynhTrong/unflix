@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unflix/core/models/SuperIcon.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/film_information_screen.dart';
 
@@ -21,6 +22,7 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         child: ListView.builder(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) => Container(
@@ -55,17 +57,30 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                                             isSingleFlim: false,
                                           )));
                             },
-                            icon: Icon(
-                              Icons.play_circle_outline_rounded,
-                              color: Colors.white,
-                              size: 80,
-                            )),
+                            icon: SuperIcon(
+                              iconPath: 'assets/icons/PlayCircle.svg',
+                              size: 68,
+                            ),),
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            color: Color(0xff262626),
+                            height: 4,
+                            width: 118,
+                          ),
+                          Container(
+                            color: Color(0xFFF6C700),
+                            height: 4,
+                            width: 100,
+                          ),
+                        ],
                       ),
                       Container(
-                        height: 36,
+                        height: 32,
                         width: 118,
                         decoration: BoxDecoration(
-                          color: Colors.grey[900],
+                          color: Color(0xff191919),
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(5),
                               bottomRight: Radius.circular(5)),
@@ -83,14 +98,16 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                                               FilmInformationScreen()));
                                 },
                                 icon: Icon(
-                                  Icons.error_outline,
-                                  color: Colors.white,
-                                )),
+                                  Icons.info_outline_rounded,
+                                  color: Color(0xffB2B2B2),
+                                  size: 18,
+                                ),),
                             IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.align_horizontal_right,
-                                  color: Colors.white,
+                                  Icons.more_vert_rounded,
+                                  color: Color(0xffB2B2B2),
+                                  size: 16,
                                 ))
                           ],
                         ),
