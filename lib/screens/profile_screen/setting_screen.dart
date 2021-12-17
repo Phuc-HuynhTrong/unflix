@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unflix/core/models/SuperIcon.dart';
 import 'package:unflix/screens/profile_screen/delete_all_download_screen.dart';
 import 'package:unflix/screens/profile_screen/use_mobile_data_screen.dart';
 import 'package:unflix/screens/profile_screen/video_quality_screen.dart';
@@ -31,12 +32,15 @@ class SettingScreen extends StatelessWidget {
         body: Container(
           child: ListView(
             children: [
-              Text(
-                'Phát lại video',
-                style: TextInApp().headline6(Colors.white, context),
+              Container(
+                margin: EdgeInsets.only(left: 12, bottom: 8),
+                child: Text(
+                  'Phát lại video',
+                  style: TextInApp().headline6(Colors.white, context),
+                ),
               ),
               CustomListTileNavigate(
-                leading: Icons.signal_cellular_alt_rounded,
+                iconPath: "assets/icons/data.svg",
                 title: "Sử dụng dữ liệu di động",
                 subtitle: 'Tự động',
                 navigateToScreen: UseMobileDataScreen(),
@@ -44,31 +48,32 @@ class SettingScreen extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-              Text(
-                'Tệp tải xuống',
-                style: TextInApp().headline6(Colors.white, context),
+              Container(
+                margin: EdgeInsets.only(left: 12, bottom: 8),
+                child: Text(
+                  'Tệp tải xuống',
+                  style: TextInApp().headline6(Colors.white, context),
+                ),
               ),
               CustomListTileButton(
-                leading: Icons.signal_wifi_4_bar_rounded,
+                iconPath: "assets/icons/wifi.svg",
                 title: "Chỉ dùng wifi",
               ),
               CustomListTileButton(
-                leading: Icons.download_for_offline_outlined,
+                iconPath: "assets/icons/screen-share.svg",
                 title: "Tải xuống thông minh",
                 subtitle:
                     'Các tệp đã xem xong sẽ bị xóa và thay thế bằng các tập tiếp theo, chỉ sử dụng wifi',
               ),
               CustomListTileNavigate(
-                leading: Icons.settings,
+                iconPath: "assets/icons/filter.svg",
                 title: 'Chất lượng video',
                 subtitle: 'Tiêu chuẩn',
                 navigateToScreen: VideoQualityScreen(),
               ),
-              CustomListTileNavigate(
-                leading: Icons.delete_outline,
-                title: 'Xóa tất cả các tệp đã tải xuống',
-                navigateToScreen: DeleteAllDownloadScreen(),
-              ),
+
+              DeleteAllButton()
+
             ],
           ),
         ));
@@ -76,13 +81,13 @@ class SettingScreen extends StatelessWidget {
 }
 
 class CustomListTileNavigate extends StatelessWidget {
-  final IconData leading;
+  final String iconPath;
   final String title;
   final Widget navigateToScreen;
   final String subtitle;
   const CustomListTileNavigate({
     Key? key,
-    required this.leading,
+    required this.iconPath,
     required this.title,
     this.subtitle = '',
     required this.navigateToScreen,
@@ -102,11 +107,7 @@ class CustomListTileNavigate extends StatelessWidget {
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
           children: [
-            Icon(
-              leading,
-              color: Color.fromARGB(255, 122, 122, 122),
-              size: 30.0,
-            ),
+            SuperIcon(iconPath: iconPath, size: 30),
             SizedBox(
               width: 20.0,
             ),
@@ -146,13 +147,13 @@ class CustomListTileNavigate extends StatelessWidget {
 }
 
 class CustomListTileButton extends StatefulWidget {
-  final IconData leading;
+  final String iconPath;
   final String title;
   final String subtitle;
 
   const CustomListTileButton({
     Key? key,
-    required this.leading,
+    required this.iconPath,
     required this.title,
     this.subtitle = '',
   }) : super(key: key);
@@ -179,11 +180,7 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
           children: [
-            Icon(
-              widget.leading,
-              color: Color.fromARGB(255, 122, 122, 122),
-              size: 30.0,
-            ),
+            SuperIcon(iconPath: widget.iconPath, size: 30),
             SizedBox(
               width: 20.0,
             ),
@@ -208,6 +205,7 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
               ),
             ),
             Container(
+              height: 40,
                 margin: EdgeInsets.only(right: 5.0),
                 child: CupertinoSwitch(
                     value: _isEnalbeButton,
@@ -222,3 +220,116 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
     );
   }
 }
+
+
+class DeleteAllButton extends StatelessWidget {
+  const DeleteAllButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return   Container(
+      margin: EdgeInsets.symmetric(vertical: 1.0),
+      padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 10.0),
+      color: Color.fromARGB(255, 18, 18, 18),
+      child: Column(
+        children: [
+          Container(
+            child: Row(
+              children: [
+                SuperIcon(iconPath: "assets/icons/trash.svg", size: 30),
+                SizedBox(
+                  width: 20.0,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Xóa các tệp đã tải xuống",
+                        style: kLTTile,
+                      ),
+
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 10, top: 18),
+            alignment: Alignment.centerLeft,
+            child: Text("IPhone 14 porn Max", style: TextStyle(fontSize: 19, fontFamily: "Noto Sans", fontWeight: FontWeight.w500, color: Color(0xffdcdcdc)),),
+
+          ),
+
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 9, vertical: 9),
+            child: Row(
+              children: [
+                Container(
+                  width: 50,
+                  color: Color(0xff4D97EF),
+                  height: 9
+                ),
+                Container(
+                  width: 150,
+                  color: Color(0xff717171),
+                  height: 9,
+                ),
+                Expanded(
+                  child: Container(
+                    color: Color(0xffdcdcdc),
+                    height: 9,
+                  ),
+                )
+              ],
+            ),
+          ),
+
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+            child: Row(
+              children: [
+
+                Container(
+                  width: 12, height: 12,
+                  color: Color(0xff4D97EF),
+                ),
+                SizedBox(width: 8,),
+                Text("Unflix", style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Color(0xff717171)),),
+
+
+                Spacer(),
+                Container(
+                  width: 12, height: 12,
+                  color: Color(0xff717171),
+                ),
+                SizedBox(width: 8,),
+                Text("Đã sử dụng", style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Color(0xff717171)),),
+
+                Spacer(),
+                Container(
+                  width: 12, height: 12,
+                  color: Color(0xffdcdcdc),
+                ),
+                SizedBox(width: 8,),
+                Text("Còn trống", style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Color(0xff717171)),),
+
+
+
+              ],
+
+            ),
+          )
+        ],
+      ),
+    )
+    ;
+  }
+}
+
+
+
+
