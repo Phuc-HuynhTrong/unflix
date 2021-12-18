@@ -155,6 +155,9 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                     fontSize: 20,
                   ),
                 ),
+                SizedBox(
+                  height: 4,
+                ),
                 ScoreRow(),
                 SizedBox(
                   height: 10,

@@ -18,19 +18,12 @@ class _ScoreRowState extends State<ScoreRow> {
         Row(
           children: [
             Container(
-              padding: EdgeInsets.all(1),
-              margin: EdgeInsets.only(left: 0, right: 10),
-              width: 23,
-              height: 11,
-              decoration: BoxDecoration(
-                color: Color(0xffF6C700),
-              ),
-              child: Text(
-                'IMDb',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 8,
-                    fontWeight: FontWeight.w800),
+              padding:
+              const EdgeInsets.only(
+                  left: 2, right: 4),
+              height: 12,
+              child: Image.asset(
+                'assets/icons/imdb.png',
               ),
             ),
             Text(
