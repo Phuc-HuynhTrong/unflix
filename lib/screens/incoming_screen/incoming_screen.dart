@@ -13,6 +13,7 @@ class IncomingScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             'Sắp ra mắt',
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.0),
