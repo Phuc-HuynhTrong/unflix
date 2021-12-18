@@ -119,6 +119,20 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                                 ),
                               ),
                             ),
+                            Visibility(
+                              visible: showAllButton,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: RadialGradient(
+                                    colors: [
+                                      Colors.black26,
+                                      Colors.black26,
+                                    ],
+                                    radius: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       );
@@ -146,19 +160,19 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                         Icon(
                           Icons.cast,
                           color: Colors.white,
-                          size: 30,
+                          size: 26,
                         ),
                         Center(
                           child: Text(
                             '"GAMBIT HẬU"',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
-                        TextButton(
+                        IconButton(
                             onPressed: () async {
                               await SystemChrome.setPreferredOrientations([
                                 DeviceOrientation.portraitDown,
@@ -166,13 +180,8 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                               ]);
                               Navigator.pop(context);
                             },
-                            child: Text(
-                              'Exit',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 20),
-                            ))
+                            icon: Icon(Icons.close, color: Colors.white
+                            ),),
                       ],
                     ),
                   ),
@@ -331,6 +340,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/bolt.png'),
+                              SizedBox(width: 8),
                               Text(
                                 'Tốc độ ${speed}x',
                                 style: TextStyle(color: Colors.white),
@@ -354,6 +364,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/LockOpen.png'),
+                              SizedBox(width: 8),
                               Text(
                                 'Khóa',
                                 style: TextStyle(color: Colors.white),
@@ -377,6 +388,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/Stack.png'),
+                              SizedBox(width: 8),
                               Text(
                                 'Các tập',
                                 style: TextStyle(color: Colors.white),
@@ -394,6 +406,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/ChatTeardropDots.png'),
+                              SizedBox(width: 8),
                               Text(
                                 'Âm thanh và phụ đề',
                                 style: TextStyle(color: Colors.white),
@@ -425,6 +438,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/SkipForward.png'),
+                              SizedBox(width: 8),
                               Text(
                                 'Tập tiếp theo',
                                 style: TextStyle(color: Colors.white),
