@@ -14,6 +14,7 @@ class _BottomTapBarState extends State<BottomTapBar>
     with TickerProviderStateMixin {
   int index = 1;
   late TabController _tabController;
+
   @override
   void initState() {
     super.initState();
@@ -27,46 +28,64 @@ class _BottomTapBarState extends State<BottomTapBar>
         Container(
           margin: EdgeInsets.all(0),
           child: TabBar(
+              indicatorColor: Color(0xffF6C700),
               controller: _tabController,
               isScrollable: true,
               indicatorWeight: 3,
+              labelColor: Colors.white,
+              unselectedLabelColor: Color(0xff939393),
               tabs: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Các tập',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(bottom: 6),
+                  child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Các tập',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Bộ sưu tập',
-                      style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                    child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Bộ sưu tập',
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                      ],
                     ),
-                  ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'Nội dung tương tự',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Nội dung tương tự',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Trailer',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Trailer',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
                 ),
               ]),
         ),
@@ -74,8 +93,7 @@ class _BottomTapBarState extends State<BottomTapBar>
           margin: EdgeInsets.all(0),
           height: 240,
           child: TabBarView(controller: _tabController, children: [
-            Container(
-            ),
+            Container(),
             Container(
               height: 180,
               child: ListMovie(),

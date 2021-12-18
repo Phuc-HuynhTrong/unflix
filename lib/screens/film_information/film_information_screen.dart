@@ -53,7 +53,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
               icon: Icon(
                 Icons.cast,
                 color: Colors.white,
-                size: 30,
+                size: 26,
               )),
         ],
       ),
@@ -217,9 +217,10 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                 hoverColor: Colors.black,
                 border: UnderlineInputBorder(borderSide: BorderSide.none),
               ),
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
           ),
+          SizedBox(height: 4,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -309,7 +310,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 28,
           ),
           Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
