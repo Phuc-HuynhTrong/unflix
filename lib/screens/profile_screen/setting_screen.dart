@@ -6,9 +6,15 @@ import 'package:unflix/screens/profile_screen/use_mobile_data_screen.dart';
 import 'package:unflix/screens/profile_screen/video_quality_screen.dart';
 import 'package:unflix/style/text_style.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SettingScreen> createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends State<SettingScreen> {
+  double data = 100;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +89,7 @@ class SettingScreen extends StatelessWidget {
                 navigateToScreen: VideoQualityScreen(),
               ),
 
-              DeleteAllButton()
+              DeleteAllButton(data: data)
 
             ],
           ),
@@ -233,9 +239,15 @@ class _CustomListTileButtonState extends State<CustomListTileButton> {
 }
 
 
-class DeleteAllButton extends StatelessWidget {
-  const DeleteAllButton({Key? key}) : super(key: key);
+class DeleteAllButton extends StatefulWidget {
+  double data;
+   DeleteAllButton({Key? key, required this.data}) : super(key: key);
 
+  @override
+  State<DeleteAllButton> createState() => _DeleteAllButtonState();
+}
+
+class _DeleteAllButtonState extends State<DeleteAllButton> {
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -244,7 +256,24 @@ class DeleteAllButton extends StatelessWidget {
       color: Color.fromARGB(255, 18, 18, 18),
       child: Column(
         children: [
-          Container(
+          GestureDetector(
+            onTap: (){
+              setState(() {
+                widget.data = 0;
+                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //width: MediaQuery.of(context).size.width ,
+                  backgroundColor: Color(0xffF6C700),
+                  content: Text(
+                    "Đã xóa các tệp tải xuống",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+              });
+            },
             child: Row(
               children: [
                 SuperIcon(iconPath: "assets/icons/trash.svg", size: 30),
@@ -272,17 +301,15 @@ class DeleteAllButton extends StatelessWidget {
             margin: EdgeInsets.only(left: 10, top: 18),
             alignment: Alignment.centerLeft,
             child: Text("IPhone 14 porn Max", style: TextStyle(fontSize: 19, fontFamily: "Noto Sans", fontWeight: FontWeight.w500, color: Color(0xffdcdcdc)),),
-
           ),
-
           Container(
             margin: EdgeInsets.symmetric(horizontal: 9, vertical: 9),
             child: Row(
               children: [
                 Container(
-                  width: 50,
+                  width: widget.data,
                   color: Color(0xff4D97EF),
-                  height: 9
+                  height: 9,
                 ),
                 Container(
                   width: 150,

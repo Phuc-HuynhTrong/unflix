@@ -64,7 +64,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                       ),
                       Container(
                         height: 40,
-                        width: !selected ? 100 : size.width,
+                        width: !selected ? 100 : size.width+100,
                         child: TextFormField(
                           cursorColor: Colors.white,
                           enabled: selected ? true : false,

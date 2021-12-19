@@ -21,7 +21,20 @@ Widget MenuButton(BuildContext context) {
       itemBuilder: (context) => [
             PopupMenuItem<int>(
               value: 0,
-              onTap: () {},
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //width: MediaQuery.of(context).size.width ,
+                  backgroundColor: Color(0xffF6C700),
+                  content: Text(
+                    "Đã thêm vào danh sách",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+              },
               child: const Text(
                 "Thêm vào danh sách",
                 style: TextStyle(

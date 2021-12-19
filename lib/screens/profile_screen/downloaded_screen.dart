@@ -28,32 +28,63 @@ var downloadedVideo = [
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 2 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 3 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 4 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 5 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 6 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg")
 ];
-
+var recommendList = [
+  new VideoItem(
+      "50 sắc thái tập 7 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg"),
+  new VideoItem(
+      "50 sắc thái tập 8 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg"),
+  new VideoItem(
+      "50 sắc thái tập 9 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg"),
+  new VideoItem(
+      "50 sắc thái tập 10 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg"),
+  new VideoItem(
+      "50 sắc thái tập 11 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg"),
+  new VideoItem(
+      "50 sắc thái tập 12 full HD VietSub không che",
+      "Family Television series",
+      "24tr lượt xem  -  2 năm trước",
+      "assets/images/horizontal1.jpg")
+];
 class _DownloadedScreenState extends State<DownloadedScreen> {
   @override
   Widget build(BuildContext context) {
@@ -178,7 +209,19 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             value: 0,
                             onTap: () {
                               setState(() {
-                                downloadedVideo.removeAt(0);
+                                downloadedVideo.removeAt(i);
+                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                    //width: MediaQuery.of(context).size.width ,
+                                    backgroundColor: Color(0xffF6C700),
+                                    content: Text(
+                                      "Đã xóa",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ));
                               });
                             },
                             child: const Text(
@@ -220,7 +263,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
-            for (int i = 0; i < downloadedVideo.length; i++)
+            for (int i = 0; i < recommendList.length; i++)
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +272,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                     Container(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
-                        child: Image.asset(downloadedVideo[i].thumbnailImg,
+                        child: Image.asset(recommendList[i].thumbnailImg,
                             width: 0.384 * size.width,
                             height: 0.384 * size.width * 9 / 16,
                             fit: BoxFit.fill),
@@ -247,7 +290,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                           Container(
                             margin: EdgeInsets.only(bottom: 2),
                             child: Text(
-                              downloadedVideo[i].name,
+                              recommendList[i].name,
                               style:
                                   TextStyle(fontSize: 14, color: Colors.white),
                             ),
@@ -255,7 +298,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                           Container(
                             margin: EdgeInsets.symmetric(vertical: 2),
                             child: Text(
-                              downloadedVideo[i].category,
+                              recommendList[i].category,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xff8F8F8F)),
                             ),
@@ -263,7 +306,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                           Container(
                             margin: EdgeInsets.symmetric(vertical: 2),
                             child: Text(
-                              downloadedVideo[i].description,
+                              recommendList[i].description,
                               style: TextStyle(
                                   fontSize: 12, color: Color(0xff8F8F8F)),
                             ),
@@ -274,12 +317,44 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Icon(
-                        Icons.download,
-                        color: Color(0xffe7e7e7),
-                        size: 24,
+                    GestureDetector(
+                      onTap: () async {
+                        await ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đang tải xuống...",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ));
+                        setState(() {
+                          downloadedVideo.add(recommendList[i]);
+                          recommendList.removeAt(i);
+                        });
+                        await ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã tải xuống",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.download,
+                          color: Color(0xffe7e7e7),
+                          size: 24,
+                        ),
                       ),
                     ),
                   ],

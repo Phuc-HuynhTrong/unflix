@@ -159,7 +159,8 @@ class _CustomCardState extends State<CustomCard> {
                           return AspectRatio(
                             aspectRatio: _videoPlayerControllercontroller1
                                 .value.aspectRatio,
-                            child: VideoPlayer(_videoPlayerControllercontroller1),
+                            child:
+                                VideoPlayer(_videoPlayerControllercontroller1),
                           );
                         } else {
                           return const Center(
@@ -245,6 +246,19 @@ class _CustomCardState extends State<CustomCard> {
                   onTap: () {
                     setState(() {
                       remindMe = !remindMe;
+
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        //width: MediaQuery.of(context).size.width ,
+                        backgroundColor: Color(0xffF6C700),
+                        content: Text(
+                          "Đã cài đặt thông báo",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      ));
                     });
                   },
                   child: CustomIconAndLabel(

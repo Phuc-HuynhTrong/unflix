@@ -20,12 +20,12 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = VideoPlayerController.asset(
-        'assets/videos/TopGun.mp4');
+    _controller = VideoPlayerController.asset('assets/videos/TopGun.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _tabController = TabController(length: 2, vsync: this);
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -33,6 +33,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
     _controller.dispose();
     _tabController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,8 +179,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                       await Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  DisplayMovieScreen(
+                              builder: (context) => DisplayMovieScreen(
                                     assetVideo: 'assets/videos/TopGun.mp4',
                                     isSingleFlim: false,
                                   )));
@@ -224,12 +224,27 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
               style: TextStyle(color: Colors.white, fontSize: 14),
             ),
           ),
-          SizedBox(height: 4,),
+          SizedBox(
+            height: 4,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    //width: MediaQuery.of(context).size.width ,
+                    backgroundColor: Color(0xffF6C700),
+                    content: Text(
+                      "Đã thêm vào danh sách",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ));
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -292,7 +307,20 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    //width: MediaQuery.of(context).size.width ,
+                    backgroundColor: Color(0xffF6C700),
+                    content: Text(
+                      "Đã tải xuống",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ));
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
