@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart';
@@ -111,6 +112,20 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           children: [
                             VideoPlayer(_controller),
                             Visibility(
+                              visible: showAllButton,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  gradient: RadialGradient(
+                                    colors: [
+                                      Colors.black26,
+                                      Colors.black26,
+                                    ],
+                                    radius: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Visibility(
                               visible: _controller.value.isPlaying
                                   ? showAllButton
                                   : true,
@@ -125,20 +140,6 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                                 child: VideoProgressIndicator(
                                   _controller,
                                   allowScrubbing: true,
-                                ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: showAllButton,
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  gradient: RadialGradient(
-                                    colors: [
-                                      Colors.black26,
-                                      Colors.black26,
-                                    ],
-                                    radius: 1.0,
-                                  ),
                                 ),
                               ),
                             ),
@@ -221,6 +222,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           ],
                         ),
                       ),
+                      Spacer(),
                       Visibility(
                         visible: showAllButton,
                         child: Container(
@@ -297,17 +299,18 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           ),
                         ),
                       ),
+                      Spacer(),
                       Visibility(
                         visible: showAllButton,
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.volume_up_outlined,
                               color: Colors.white,
                               size: 30,
                             ),
                             RotationTransition(
-                              turns: new AlwaysStoppedAnimation(270 / 360),
+                              turns: const AlwaysStoppedAnimation(270 / 360),
                               child: Container(
                                   height: 160,
                                   child: Slider(
@@ -327,6 +330,33 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                       ),
                     ],
                   ),
+                  Visibility(
+                      visible: showAllButton,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ValueListenableBuilder(
+                            valueListenable: _controller,
+                            builder: (BuildContext context,
+                                VideoPlayerValue value, Widget? child) {
+                              return Text(
+                                _controller.value.position
+                                    .toString()
+                                    .substring(0, 7),
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 13),
+                              );
+                            },
+                          ),
+                          Text(
+                            _controller.value.duration
+                                .toString()
+                                .substring(0, 7),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
+                          )
+                        ],
+                      )),
                   Visibility(
                     visible: showAllButton,
                     child: Row(
@@ -638,13 +668,13 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                         },
                         child: Container(
                             color: Colors.black,
-                            height: 230,
+                            height: MediaQuery.of(context).size.height,
                             width: MediaQuery.of(context).size.width,
                             child: Column(
                               children: [
                                 Container(
                                   child: ListChapter(
-                                    list: listPoster.listContinue,
+                                    list: listPoster.listContinue2,
                                   ),
                                 ),
                               ],
@@ -676,189 +706,200 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             canPressed = true;
                           });
                         },
-                        child: Container(
-                            color: Colors.black,
-                            height: MediaQuery.of(context).size.height - 50,
-                            width: MediaQuery.of(context).size.width,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  padding: EdgeInsets.fromLTRB(50, 30, 30, 0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: const [
-                                      Text(
-                                        "Âm thanh\n",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                              sigmaX: 100,
+                              sigmaY: 100,
+                              tileMode: TileMode.values[0]),
+                          child: Container(
+                              color: Colors.black54,
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    padding:
+                                        EdgeInsets.fromLTRB(50, 100, 30, 0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          "Âm thanh\n",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "            Tiếng anh [Gốc]",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
+                                        Text(
+                                          "            Tiếng anh [Gốc]",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng Nhật",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
+                                        SizedBox(
+                                          height: 5,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng Việt",
-                                        style: TextStyle(
+                                        Divider(
+                                          height: 2,
                                           color: Colors.white,
-                                          fontSize: 13,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng Hàn",
-                                        style: TextStyle(
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng Nhật",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
                                           color: Colors.white,
-                                          fontSize: 13,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng Việt",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng Hàn",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  padding: EdgeInsets.fromLTRB(50, 30, 30, 0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: const [
-                                      Text(
-                                        "Phụ đề\n",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    padding:
+                                        EdgeInsets.fromLTRB(50, 100, 30, 0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          "Phụ đề\n",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "            Tắt",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
+                                        Text(
+                                          "            Tắt",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng anh [CC]",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
+                                        SizedBox(
+                                          height: 5,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng Việt",
-                                        style: TextStyle(
+                                        Divider(
+                                          height: 2,
                                           color: Colors.white,
-                                          fontSize: 13,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "            Tiếng Hàn",
-                                        style: TextStyle(
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng anh [CC]",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
                                           color: Colors.white,
-                                          fontSize: 13,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng Việt",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "            Tiếng Hàn",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Divider(
+                                          height: 2,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            )),
+                                ],
+                              )),
+                        ),
                       )
                     ],
                   ),

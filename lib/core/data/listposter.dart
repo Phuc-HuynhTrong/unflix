@@ -73,6 +73,18 @@ class ListPoster {
     const AssetImage('assets/images/trangquynh.jpg'),
     const AssetImage('assets/images/trangti.jpg'),
   ];
+  List<AssetImage> listContinue2 = [
+    const AssetImage('assets/images/spiderman.png'),
+    const AssetImage('assets/images/phimgiday.png'),
+    const AssetImage('assets/images/venom.png'),
+    const AssetImage('assets/images/wibu1.png'),
+    const AssetImage('assets/images/wibu2.png'),
+    const AssetImage('assets/images/venom.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+    const AssetImage('assets/images/thetomorrowwar.jpg'),
+    const AssetImage('assets/images/trangquynh.jpg'),
+    const AssetImage('assets/images/trangti.jpg'),
+  ];
   List<AssetImage> listUSUK = [
     const AssetImage('assets/images/mrrobot.png'),
     const AssetImage('assets/images/lovedeath.jpeg'),
