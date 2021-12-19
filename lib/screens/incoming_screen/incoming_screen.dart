@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unflix/screens/film_information/film_information_screen.dart';
+import 'package:video_player/video_player.dart';
 
 import 'package:unflix/screens/incoming_screen/notification_screen.dart';
-import 'package:unflix/style/text_style.dart';
 
 class IncomingScreen extends StatelessWidget {
   const IncomingScreen({Key? key}) : super(key: key);
@@ -31,7 +32,8 @@ class IncomingScreen extends StatelessWidget {
         ),
         body: Container(
           child: ListView(
-            physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            physics:
+                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             children: [
               ListTile(
                 leading: Icon(Icons.notifications_none_outlined),
@@ -109,6 +111,18 @@ class CustomCard extends StatefulWidget {
 
 class _CustomCardState extends State<CustomCard> {
   bool remindMe = false;
+  late VideoPlayerController _videoPlayerControllercontroller1;
+  late Future<void> _initializeVideoPlayer1Future1;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _videoPlayerControllercontroller1 =
+        VideoPlayerController.asset('assets/videos/TopGun.mp4');
+    _initializeVideoPlayer1Future1 =
+        _videoPlayerControllercontroller1.initialize();
+    _videoPlayerControllercontroller1.setLooping(true);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +136,87 @@ class _CustomCardState extends State<CustomCard> {
             height: 200.0,
             width: double.infinity,
             color: Colors.grey,
-            child: Center(
-              child: Text('Video ne'),
+            child: Stack(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (_videoPlayerControllercontroller1.value.isPlaying) {
+                        _videoPlayerControllercontroller1.pause();
+                      } else {
+                        _videoPlayerControllercontroller1.play();
+                      }
+                    });
+                  },
+                  child: Container(
+                    height: 211,
+                    //margin: EdgeInsets.only(bottom: 30),
+                    width: MediaQuery.of(context).size.width,
+                    child: FutureBuilder(
+                      future: _initializeVideoPlayer1Future1,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return AspectRatio(
+                            aspectRatio: _videoPlayerControllercontroller1
+                                .value.aspectRatio,
+                            child: VideoPlayer(_videoPlayerControllercontroller1),
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Visibility(
+                          visible:
+                              _videoPlayerControllercontroller1.value.isPlaying
+                                  ? false
+                                  : true,
+                          child: TextButton(
+                            onPressed: () {
+                              setState(() {
+                                if (_videoPlayerControllercontroller1
+                                    .value.isPlaying) {
+                                  _videoPlayerControllercontroller1.pause();
+                                } else {
+                                  _videoPlayerControllercontroller1.play();
+                                }
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(
+                                      color: Colors.white, width: 1)),
+                              child: Icon(
+                                _videoPlayerControllercontroller1
+                                        .value.isPlaying
+                                    ? Icons.pause
+                                    : Icons.play_arrow,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
           Container(
@@ -162,7 +255,12 @@ class _CustomCardState extends State<CustomCard> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FilmInformationScreen()));
+                  },
                   child: CustomIconAndLabel(
                     icon: Icons.info_outline,
                     label: 'Thông tin',
