@@ -55,16 +55,32 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
 
 
 
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
+            GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //width: MediaQuery.of(context).size.width ,
+                  backgroundColor: Color(0xffF6C700),
+                  content: Text(
+                    "Đã gửi mail, xin kiểm tra mail của bạn",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
 
+                ),
+                padding: EdgeInsets.symmetric(vertical: 12),
+                width: MediaQuery.of(context).size.width-36,
+                child: Text('Gửi', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),),
               ),
-              padding: EdgeInsets.symmetric(vertical: 12),
-              width: MediaQuery.of(context).size.width-36,
-              child: Text('Gửi', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),),
             ),
 
             Container(

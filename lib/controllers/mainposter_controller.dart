@@ -23,6 +23,7 @@ class MoviePosterController extends GetxController
     super.onInit();
   }
 
+  @override
   void onClose() {
     super.onClose();
     _animationController.reset();

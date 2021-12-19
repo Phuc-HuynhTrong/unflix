@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/screens/auth_screens/login_screen.dart';
+import 'package:unflix/screens/home_page/home_page_sreen.dart';
+
+import '../../home.dart';
 
 
 class SignUpScreen extends StatefulWidget {
@@ -113,8 +116,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+              onTap: () async {
+                await ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //width: MediaQuery.of(context).size.width ,
+                  backgroundColor: Color(0xffF6C700),
+                  content: Text(
+                    "Đăng ký thành công",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+                Future.delayed(const Duration(milliseconds: 1000), () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
+                });
               },
               child: Container(
                 alignment: Alignment.center,

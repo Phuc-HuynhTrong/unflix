@@ -95,6 +95,18 @@ class ListPoster {
     // listUSUK[1] = AssetImage('assets/images/prisonbreak.png');
     // listUSUK[2] = AssetImage('assets/images/mrrobot.png');
   }
+  List<AssetImage> favouriteList =[
+    const AssetImage('assets/images/venom.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+    const AssetImage('assets/images/thetomorrowwar.jpg'),
+    const AssetImage('assets/images/trangquynh.jpg'),
+    const AssetImage('assets/images/trangti.jpg'),
+    const AssetImage('assets/images/venom.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+    const AssetImage('assets/images/thetomorrowwar.jpg'),
+    const AssetImage('assets/images/trangquynh.jpg'),
+    const AssetImage('assets/images/trangti.jpg'),
+  ];
 }
 
 class MainPosterModel {
@@ -110,6 +122,3 @@ class MainPosterModel {
     this.imdb = imdb;
   }
 }
-
-List<AssetImage> favouriteList =
-    List.filled(10, AssetImage('assets/images/stpng.png'));
