@@ -119,14 +119,14 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               alignment: Alignment.centerLeft,
 
-              child: Text('UNFLIX', style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
+              child: Text('UNFLIX', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
             ),
 
             Container(
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('SIGN UP', style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
+              child: Text('SIGN IN', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
             ),
             
             Expanded(child: Container( child: Text(""),),),

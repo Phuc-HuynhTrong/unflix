@@ -16,6 +16,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: Container(
         margin: EdgeInsets.only(top: 150, left: 18, right: 18),
@@ -111,29 +112,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 12,),
 
 
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
 
+                ),
+                padding: EdgeInsets.symmetric(vertical: 12),
+                width: MediaQuery.of(context).size.width-36,
+                child: Text('Đăng ký', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),),
               ),
-              padding: EdgeInsets.symmetric(vertical: 12),
-              width: MediaQuery.of(context).size.width-36,
-              child: Text('Đăng ký', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),),
             ),
 
             Container(
               alignment: Alignment.centerLeft,
 
-              child: Text('UNFLIX', style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
+              child: Text('UNFLIX', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
             ),
 
             Container(
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('SIGN UP', style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
+              child: Text('SIGN UP', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),

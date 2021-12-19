@@ -70,20 +70,20 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
             Container(
               alignment: Alignment.centerLeft,
 
-              child: Text('UNFLIX', style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
+              child: Text('UNFLIX', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold, color: Color(0xffF6C700)),),
             ),
 
             Container(
               alignment: Alignment.centerLeft,
 
-              child: Text('reset', style: TextStyle(fontSize: 36,height: 0.5, fontWeight: FontWeight.bold, color: Color(0xffffffff)),),
+              child: Text('reset', style: TextStyle(fontSize: 30,height: 0.5, fontWeight: FontWeight.bold, color: Color(0xffffffff)),),
             ),
 
             Container(
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('Password', style: TextStyle(fontSize: 76, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
+              child: Text('Password', style: TextStyle(fontSize: 66, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),
