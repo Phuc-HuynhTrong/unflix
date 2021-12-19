@@ -5,11 +5,10 @@ class MoviePosterController extends GetxController
     with SingleGetTickerProviderMixin {
   late AnimationController _animationController;
   late Animation _animation;
-  late PageController pageController ;
+  late PageController pageController;
   RxInt _currentPage = 1.obs;
   int page = 0;
   @override
-
   void onInit() {
     _currentPage.value = 0;
     pageController = PageController();
@@ -31,29 +30,33 @@ class MoviePosterController extends GetxController
     pageController.dispose();
     print('close controller');
   }
+
   RxInt get currentPage => this._currentPage;
-  void chanePagecurrent(int index )
-  {
+  void chanePagecurrent(int index) {
     _currentPage.value = index;
     page = index;
     _animationController.reset();
     _animationController.forward().whenComplete(() => nextMovie());
   }
+
   nextMovie() {
-    if (page < 2) {
-      pageController.nextPage(
-          duration: Duration(milliseconds: 250), curve: Curves.ease);
-      _animationController.reset();
-      _animationController.forward().whenComplete(() => nextMovie());
-      _currentPage.value = page +1;
-      page += 1;
-    } else {
-      page = 0;
-      _currentPage.value = 1;
-      _animationController.reset();
-      _animationController.forward().whenComplete(() => nextMovie());
-      pageController.animateToPage(0,
-          duration: Duration(milliseconds: 350), curve: Curves.ease);
-    }
+    try {
+      if (page < 2) {
+        pageController.nextPage(
+            duration: const Duration(milliseconds: 250), curve: Curves.ease);
+        _animationController.reset();
+        _animationController.forward().whenComplete(() => nextMovie());
+        _currentPage.value = page + 1;
+        page += 1;
+      } else {
+        page = 0;
+        _currentPage.value = 1;
+        _animationController.reset();
+        _animationController.forward().whenComplete(() => nextMovie());
+        pageController.animateToPage(0,
+            duration: const Duration(milliseconds: 350), curve: Curves.ease);
+      }
+    } catch (e) {}
+    ;
   }
 }
