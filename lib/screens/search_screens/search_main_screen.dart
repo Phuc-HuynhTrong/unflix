@@ -78,6 +78,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
           if (!isSearched)
             Expanded(
               child: ListView(
+                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 padding: EdgeInsets.zero,
                 children: [
                   Container(
@@ -318,6 +319,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
           if (isSearched)
             Expanded(
               child: ListView(
+                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 padding: EdgeInsets.zero,
                 children: [
                   Container(

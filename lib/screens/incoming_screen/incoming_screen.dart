@@ -31,6 +31,7 @@ class IncomingScreen extends StatelessWidget {
         ),
         body: Container(
           child: ListView(
+            physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             children: [
               ListTile(
                 leading: Icon(Icons.notifications_none_outlined),
@@ -79,13 +80,16 @@ class CustomIconAndLabel extends StatelessWidget {
         child: Column(
           children: [
             Icon(icon),
+            SizedBox(
+              height: 4,
+            ),
             Text(label),
           ],
         ));
   }
 }
 
-class CustomCard extends StatelessWidget {
+class CustomCard extends StatefulWidget {
   const CustomCard({
     Key? key,
     required this.title,
@@ -98,6 +102,13 @@ class CustomCard extends StatelessWidget {
   final String discription;
   final String tag;
   final String dateRelease;
+
+  @override
+  State<CustomCard> createState() => _CustomCardState();
+}
+
+class _CustomCardState extends State<CustomCard> {
+  bool remindMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -130,20 +141,32 @@ class CustomCard extends StatelessWidget {
                         height: 5.0,
                       ),
                       Text(
-                        dateRelease,
+                        widget.dateRelease,
                         style: TextStyle(
                             fontWeight: FontWeight.w200, fontSize: 16.0),
                       )
                     ],
                   ),
                 ),
-                CustomIconAndLabel(
-                  icon: Icons.notifications_none_outlined,
-                  label: 'Nhắc tôi',
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      remindMe = !remindMe;
+                    });
+                  },
+                  child: CustomIconAndLabel(
+                    icon: remindMe
+                        ? Icons.notifications_rounded
+                        : Icons.notifications_none_outlined,
+                    label: 'Nhắc tôi',
+                  ),
                 ),
-                CustomIconAndLabel(
-                  icon: Icons.info_outline,
-                  label: 'Thông tin',
+                InkWell(
+                  onTap: () {},
+                  child: CustomIconAndLabel(
+                    icon: Icons.info_outline,
+                    label: 'Thông tin',
+                  ),
                 ),
               ],
             ),
@@ -152,21 +175,21 @@ class CustomCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
             child: Text(
               // ,
-              title,
+              widget.title,
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
             ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
             child: Text(
-              discription,
+              widget.discription,
               style: TextStyle(fontWeight: FontWeight.w200, fontSize: 16.0),
             ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
             child: Text(
-              tag,
+              widget.tag,
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0),
             ),
           ),
