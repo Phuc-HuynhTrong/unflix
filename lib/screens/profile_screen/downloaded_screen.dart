@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
+import 'package:unflix/style/text_style.dart';
 
 class DownloadedScreen extends StatefulWidget {
   const DownloadedScreen({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class VideoItem {
   var thumbnailImg;
   var category;
   var description;
+
   VideoItem(this.name, this.category, this.description, this.thumbnailImg);
 }
 
@@ -55,41 +57,34 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.black,
+        textTheme:
+            TextTheme(headline6: TextInApp().navigation(Colors.white, context)),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color:  Colors.white,),
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 20,
+          ),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Tải xuống',
-          style: TextStyle(
-              color: Colors.white, fontSize: 24, fontWeight: FontWeight.w800),
         ),
-        actions: [
-          Container(
-            padding: EdgeInsets.only(right: 18),
-            child: Icon(
-              Icons.cast,
-              size: 18,
-              color: Colors.white,
-            ),
-          ),
-        ],
-        backgroundColor: Colors.black,
-        elevation: 0,
-        centerTitle: true,
       ),
       body: Container(
         color: Colors.black,
         padding: EdgeInsets.all(8),
         child: ListView(
+          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: 8),
               child: Text(
-                'Video đã tải xuống',
+                'Đã tải xuống',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
@@ -122,7 +117,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             child: Text(
                               downloadedVideo[i].name,
                               style:
-                              TextStyle(fontSize: 14, color: Colors.white),
+                                  TextStyle(fontSize: 14, color: Colors.white),
                             ),
                           ),
                           Container(
@@ -147,15 +142,24 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    SuperIcon(
-                        iconPath: 'assets/icons/moreAction-icon.svg', size: 19)
+                    Container(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.more_vert_rounded,
+                        color: Color(0xffe7e7e7),
+                        size: 24,
+                      ),
+                    ),
                   ],
                 ),
               ),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 8),
               child: Text(
-                'Video đề xuất tải xuống',
+                'Đề xuất tải xuống',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
@@ -188,7 +192,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             child: Text(
                               downloadedVideo[i].name,
                               style:
-                              TextStyle(fontSize: 14, color: Colors.white),
+                                  TextStyle(fontSize: 14, color: Colors.white),
                             ),
                           ),
                           Container(
@@ -214,12 +218,13 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                       width: 10,
                     ),
                     Container(
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.download,
-                          color: Color(0xffe7e7e7),
-                          size: 16,
-                        ))
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.download,
+                        color: Color(0xffe7e7e7),
+                        size: 24,
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -13,7 +13,17 @@ class FavouriteListScreen extends StatelessWidget {
           textTheme: TextTheme(
               headline6: TextInApp().headline6(Colors.white, context)),
           title: Text('Danh sách'),
-          iconTheme: IconThemeData(color: Colors.white),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 20,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          elevation: 0,
           backgroundColor: Colors.black,
           actions: [
             IconButton(
@@ -26,6 +36,7 @@ class FavouriteListScreen extends StatelessWidget {
           ],
         ),
         body: GridView.count(
+            physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             crossAxisSpacing: 15.0,
             mainAxisSpacing: 20.0,
             childAspectRatio: 0.7,

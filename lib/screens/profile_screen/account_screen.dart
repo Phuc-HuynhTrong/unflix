@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
+import 'package:unflix/style/text_style.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -9,8 +10,23 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
         elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 20,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        textTheme: TextTheme(
+            headline6: TextInApp().navigation(Colors.white, context)),
+        title: const Text(
+          "Tài khoản",
+        ),
       ),
 
       body: Container(
@@ -26,7 +42,7 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 24,),
+            SizedBox(height: 20,),
 
 
             Container(
@@ -52,9 +68,9 @@ class AccountScreen extends StatelessWidget {
 
 
             Container(
-              child: Text("Thống kê", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
+              child: Text("THỐNG KÊ", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
             ),
-            SizedBox(height: 18,),
+            SizedBox(height: 10,),
 
 
             InfomationCard(title: "Phim đã xem", quantity: "52", iconPath: "assets/icons/movie.svg"),
@@ -88,10 +104,10 @@ class _InfomationCardState extends State<InfomationCard> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Color(0xff363636)
+        color: Color(0xff222222)
       ),
       child: Row(
         children: [

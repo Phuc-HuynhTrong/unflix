@@ -9,23 +9,21 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.white),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 20,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        elevation: 0,
         textTheme:
             TextTheme(headline6: TextInApp().headline6(Colors.white, context)),
         backgroundColor: Colors.black,
         title: Text('Quản lý hồ sơ'),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Hoàn tất',
-              style: TextInApp()
-                  .subtitle(Colors.white, context)
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-          )
-        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -38,7 +36,7 @@ class EditProfileScreen extends StatelessWidget {
             ),
             CustomInputTile(
               label: 'Tên',
-              content: 'Kim Lon',
+              content: 'Kim Lơm',
             ),
             CustomInputTile(
               label: 'Email',

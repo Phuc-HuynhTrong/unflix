@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/core/data/notification_list.dart';
+import 'package:unflix/style/text_style.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({Key? key}) : super(key: key);
@@ -12,6 +13,20 @@ class NotificationScreen extends StatelessWidget {
             appBarTheme: AppBarTheme(backgroundColor: Colors.black)),
         child: Scaffold(
           appBar: AppBar(
+            textTheme: TextTheme(
+                headline6: TextInApp().headline6(Colors.white, context)),
+            title: Text('Thông báo'),
+            leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            elevation: 0,
             actions: [
               IconButton(
                 onPressed: () {},

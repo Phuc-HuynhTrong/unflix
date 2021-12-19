@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
           ],
           currentIndex: index,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey[500],
+          unselectedItemColor: Colors.grey[700],
           onTap: onTapedTap,
         ));
   }
