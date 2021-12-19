@@ -6,6 +6,7 @@ import 'package:unflix/core/data/listposter.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/film_information_screen.dart';
+import 'package:unflix/screens/home_page/menubutton.dart';
 import 'package:unflix/style/text_style.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
@@ -172,7 +173,7 @@ class MainPoster extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
-                                          children: [
+                                          children: const [
                                             Icon(
                                               Icons.play_arrow_rounded,
                                               color: Colors.black,
@@ -196,15 +197,12 @@ class MainPoster extends StatelessWidget {
                                     ),
                                     Container(
                                       width: 2,
-                                      child: IconButton(
-                                          padding: EdgeInsets.zero,
-                                          onPressed: () {
-
-                                          },
-                                          icon: const Icon(
-                                            Icons.more_vert_rounded,
-                                            color: Colors.white,
-                                          )),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          print(":vv");
+                                        },
+                                        child: MenuButton(context),
+                                      ),
                                     ),
                                   ],
                                 ),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
 import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/film_information_screen.dart';
+import 'package:unflix/screens/home_page/menubutton.dart';
 
 class ListMovieContinueToWatch extends StatefulWidget {
   final List<AssetImage> list;
@@ -97,18 +98,12 @@ class _ListMovieContinueToWatch extends State<ListMovieContinueToWatch> {
                                           builder: (context) =>
                                               FilmInformationScreen()));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.info_outline_rounded,
                                   color: Color(0xffB2B2B2),
                                   size: 18,
                                 ),),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.more_vert_rounded,
-                                  color: Color(0xffB2B2B2),
-                                  size: 16,
-                                ))
+                            MenuButton(context),
                           ],
                         ),
                       )
