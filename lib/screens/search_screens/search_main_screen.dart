@@ -126,6 +126,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
             Expanded(
               //height: size.height - 168,
               child: ListView(
+                physics: BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
                 padding: EdgeInsets.zero,
                 children: [
                   GestureDetector(
@@ -424,7 +426,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                   padding: EdgeInsets.zero,
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -451,7 +453,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast2.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast2.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -464,7 +467,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                   ),
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast3.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast3.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -480,7 +484,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -497,7 +501,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast4.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast4.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -510,7 +515,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                   ),
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast5.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast5.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -536,7 +542,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -563,7 +569,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast8.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast8.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -576,7 +583,8 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                                   ),
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset('assets/images/fast9.jpg',
+                                    child: Image.asset(
+                                        'assets/images/fast9.jpg',
                                         width: ((size.width - 20) / 1.05 - 8) /
                                             2 *
                                             0.7,
@@ -607,14 +615,15 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
-                                seachString =  'Fast and slow';
+                                seachString = 'Fast and slow';
                               });
                             },
                             child: Text(
                               'Fast and slow',
-                              style: TextStyle(color: Colors.white, height: 1.5),
+                              style:
+                                  TextStyle(color: Colors.white, height: 1.5),
                             ),
                           ),
                           Text(

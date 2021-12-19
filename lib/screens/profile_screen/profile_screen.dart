@@ -32,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
         color: Colors.black,
         child: ListView(
           children: [
+            SizedBox(height: 20,),
             UserAvatar(),
             CustomButton(
               leading: Icons.check,
@@ -64,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
               'Phiên bản 1.0.0',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromARGB(255, 29, 29, 29),
+                color: Color(0xff4F4F4F),
                 fontSize: 15.0,
               ),
             )
@@ -77,7 +78,9 @@ class ProfileScreen extends StatelessWidget {
   Widget SignOutButton() {
     return Center(
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+
+        },
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 10.0),
           decoration: BoxDecoration(
@@ -104,7 +107,7 @@ class UserAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.0),
-      height: 140.0,
+      //height: 140.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -124,35 +127,35 @@ class UserAvatar extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => EditProfileScreen()));
-            },
-            child: Container(
-              width: 165.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.edit_outlined,
-                    color: Colors.white,
-                    size: 18.0,
-                  ),
-                  SizedBox(
-                    width: 8.0,
-                  ),
-                  Text('Quản lý hồ sơ',
-                      style: TextStyle(
-                        letterSpacing: 1.2,
-                        color: Color.fromARGB(255, 146, 146, 146),
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w500,
-                      )),
-                ],
-              ),
-            ),
-          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (_) => EditProfileScreen()));
+          //   },
+          //   child: Container(
+          //     width: 165.0,
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Icon(
+          //           Icons.edit_outlined,
+          //           color: Colors.white,
+          //           size: 18.0,
+          //         ),
+          //         SizedBox(
+          //           width: 8.0,
+          //         ),
+          //         Text('Quản lý hồ sơ',
+          //             style: TextStyle(
+          //               letterSpacing: 1.2,
+          //               color: Color.fromARGB(255, 146, 146, 146),
+          //               fontSize: 15.0,
+          //               fontWeight: FontWeight.w500,
+          //             )),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -182,6 +185,9 @@ class CustomButton extends StatelessWidget {
         color: Color.fromARGB(255, 18, 18, 18),
         child: Row(
           children: [
+            SizedBox(
+              width: 10.0,
+            ),
             Icon(
               leading,
               color: Color.fromARGB(255, 122, 122, 122),
@@ -199,11 +205,14 @@ class CustomButton extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(right: 3.0),
               child: Icon(
-                Icons.arrow_right_rounded,
-                color: Color.fromARGB(255, 122, 122, 122),
-                size: 30.0,
+                Icons.arrow_forward_ios_rounded,
+                color: Color(0xff9C9C9C),
+                size: 12.0,
               ),
-            )
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
           ],
         ),
       ),

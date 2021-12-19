@@ -58,6 +58,7 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
         ],
       ),
       body: ListView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           Container(
             height: 240,

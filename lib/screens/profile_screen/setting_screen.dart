@@ -14,8 +14,18 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 20,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           textTheme: TextTheme(
-              headline6: TextInApp().headline6(Colors.white, context)),
+              headline6: TextInApp().navigation(Colors.white, context)),
           title: Text('Cài đặt ứng dụng'),
           iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: Colors.black,
@@ -31,6 +41,7 @@ class SettingScreen extends StatelessWidget {
         ),
         body: Container(
           child: ListView(
+            physics: BouncingScrollPhysics(),
             children: [
               Container(
                 margin: EdgeInsets.only(left: 12, bottom: 8),
@@ -132,13 +143,13 @@ class CustomListTileNavigate extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 5.0),
+              margin: EdgeInsets.only(right: 8.0),
               child: Icon(
-                Icons.arrow_right_rounded,
-                color: Color.fromARGB(255, 122, 122, 122),
-                size: 30.0,
+                Icons.arrow_forward_ios_rounded,
+                color: Color(0xff9C9C9C),
+                size: 12.0,
               ),
-            )
+            ),
           ],
         ),
       ),

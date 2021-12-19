@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unflix/style/text_style.dart';
 
 class UseMobileDataScreen extends StatefulWidget {
   const UseMobileDataScreen({Key? key}) : super(key: key);
@@ -18,8 +19,8 @@ class _UseMobileDataScreenState extends State<UseMobileDataScreen> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
+        textTheme: TextTheme(
+            headline6: TextInApp().navigation(Colors.white, context)),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -32,10 +33,6 @@ class _UseMobileDataScreenState extends State<UseMobileDataScreen> {
         ),
         title: const Text(
           "Sử dụng dữ liệu di động",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ),
       body: Column(
@@ -43,7 +40,7 @@ class _UseMobileDataScreenState extends State<UseMobileDataScreen> {
           Container(
             color: const Color(0xFF121212),
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            height: 56,
+            height: 64,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -51,23 +48,13 @@ class _UseMobileDataScreenState extends State<UseMobileDataScreen> {
                   "Tự động",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 13,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Visibility(
-                      visible: indexChosed == 1 ? true : false,
-                      child: const Icon(
-                        Icons.check,
-                        color: Color(0xFF026EEC),
-                        size: 24,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     CupertinoSwitch(
                         value: _isEnalbeButton,
                         onChanged: (value) {
@@ -167,7 +154,7 @@ class _CustomButtonState extends State<CustomButton> {
           color: const Color(0xFF121212),
           padding: const EdgeInsets.all(0),
           margin: const EdgeInsets.all(0),
-          height: 56,
+          height: 64,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -175,7 +162,8 @@ class _CustomButtonState extends State<CustomButton> {
                 widget.content,
                 style: TextStyle(
                   color: widget.color,
-                  fontSize: 13,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500
                 ),
               ),
               Visibility(
