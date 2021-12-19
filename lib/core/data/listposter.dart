@@ -67,6 +67,11 @@ class ListPoster {
     const AssetImage('assets/images/thetomorrowwar.jpg'),
     const AssetImage('assets/images/trangquynh.jpg'),
     const AssetImage('assets/images/trangti.jpg'),
+    const AssetImage('assets/images/venom.jpeg'),
+    const AssetImage('assets/images/strangerthings.jpeg'),
+    const AssetImage('assets/images/thetomorrowwar.jpg'),
+    const AssetImage('assets/images/trangquynh.jpg'),
+    const AssetImage('assets/images/trangti.jpg'),
   ];
   List<AssetImage> listUSUK = [
     const AssetImage('assets/images/mrrobot.png'),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +40,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
     initPlatformState();
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = new VideoPlayerController.asset(widget.assetVideo);
-    _initializeVideoPlayerFuture =  _controller.initialize();
+    _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _controller.play();
   }
@@ -77,15 +78,23 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                       showAllButton = false;
                     });
                   } else {
-                    if (canPressed == true)
+                    if (canPressed == true) {
                       setState(() {
                         showAllButton = true;
                       });
-                    if (isShowChapter == true)
+                    }
+                    if (isShowChapter == true) {
                       setState(() {
                         isShowChapter = false;
                         canPressed = true;
                       });
+                    }
+                    if (isEditSub == true) {
+                      setState(() {
+                        isEditSub = false;
+                        canPressed = true;
+                      });
+                    }
                   }
                 });
               },
@@ -122,7 +131,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             Visibility(
                               visible: showAllButton,
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   gradient: RadialGradient(
                                     colors: [
                                       Colors.black26,
@@ -157,12 +166,12 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.cast,
                           color: Colors.white,
                           size: 26,
                         ),
-                        Center(
+                        const Center(
                           child: Text(
                             '"GAMBIT HẬU"',
                             style: TextStyle(
@@ -173,15 +182,15 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           ),
                         ),
                         IconButton(
-                            onPressed: () async {
-                              await SystemChrome.setPreferredOrientations([
-                                DeviceOrientation.portraitDown,
-                                DeviceOrientation.portraitUp
-                              ]);
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(Icons.close, color: Colors.white
-                            ),),
+                          onPressed: () async {
+                            await SystemChrome.setPreferredOrientations([
+                              DeviceOrientation.portraitDown,
+                              DeviceOrientation.portraitUp
+                            ]);
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.close, color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -194,13 +203,13 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           children: [
                             Image.asset('assets/icons/Spinner.png'),
                             RotationTransition(
-                              turns: new AlwaysStoppedAnimation(270 / 360),
+                              turns: const AlwaysStoppedAnimation(270 / 360),
                               child: Container(
                                   height: 160,
                                   child: Slider(
                                       divisions: 100,
-                                      activeColor: Colors.white,
-                                      inactiveColor: Colors.grey,
+                                      activeColor: Colors.white70,
+                                      inactiveColor: Colors.white30,
                                       value: brightness,
                                       onChanged: (val) {
                                         setState(() {
@@ -252,13 +261,13 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                border:
-                                    Border.all(color: Colors.white, width: 1)),
+                                border: Border.all(
+                                    color: Colors.white70, width: 1)),
                             child: Icon(
                               _controller.value.isPlaying
                                   ? Icons.pause
                                   : Icons.play_arrow,
-                              color: Colors.white,
+                              color: Colors.white70,
                               size: 40,
                             ),
                           ),
@@ -303,8 +312,8 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                                   height: 160,
                                   child: Slider(
                                       divisions: 100,
-                                      activeColor: Colors.white,
-                                      inactiveColor: Colors.grey,
+                                      activeColor: Colors.white70,
+                                      inactiveColor: Colors.white30,
                                       value: volumnDefault,
                                       onChanged: (val) {
                                         setState(() {
@@ -388,8 +397,8 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/Stack.png'),
-                              SizedBox(width: 8),
-                              Text(
+                              const SizedBox(width: 8),
+                              const Text(
                                 'Các tập',
                                 style: TextStyle(color: Colors.white),
                               )
@@ -397,17 +406,23 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           ),
                         ),
                         MaterialButton(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              canPressed = false;
+                              showAllButton = false;
+                              isEditSub = true;
+                            });
+                          },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset('assets/icons/ChatTeardropDots.png'),
-                              SizedBox(width: 8),
-                              Text(
+                              const SizedBox(width: 8),
+                              const Text(
                                 'Âm thanh và phụ đề',
                                 style: TextStyle(color: Colors.white),
                               )
@@ -419,19 +434,17 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
                           onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) {
-                                      SystemChrome.setPreferredOrientations([
-                                        DeviceOrientation.landscapeLeft,
-                                        DeviceOrientation.landscapeRight
-                                      ]);
-                                      return DisplayMovieScreen(
-                                          assetVideo:
-                                          'assets/videos/EternalsTrailers.mp4',
-                                          isSingleFlim: false);
-                                    }));
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              SystemChrome.setPreferredOrientations([
+                                DeviceOrientation.landscapeLeft,
+                                DeviceOrientation.landscapeRight
+                              ]);
+                              return DisplayMovieScreen(
+                                  assetVideo:
+                                      'assets/videos/EternalsTrailers.mp4',
+                                  isSingleFlim: false);
+                            }));
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -471,7 +484,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                           children: [
                             Container(
                               height:
-                                  MediaQuery.of(context).size.height / 6 + 10,
+                                  MediaQuery.of(context).size.height / 6 + 15,
                               width: MediaQuery.of(context).size.width - 90,
                               child: Column(
                                 children: [
@@ -479,7 +492,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                                     divisions: 6,
                                     min: 0.5,
                                     max: 2,
-                                    activeColor: Colors.white,
+                                    activeColor: Colors.white70,
                                     inactiveColor: Colors.grey,
                                     onChanged: (val) {
                                       setState(() {
@@ -492,7 +505,7 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: [
+                                    children: const [
                                       Text(
                                         '0.5x',
                                         style: TextStyle(color: Colors.white),
@@ -556,28 +569,46 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      MaterialButton(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onPressed: () {
-                          setState(() {
-                            isLockScreen = false;
-                            showAllButton = false;
-                            canPressed = true;
-                          });
-                        },
-                        child: Container(
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.white38,
-                              borderRadius: BorderRadius.circular(50),
+                      Column(
+                        children: [
+                          MaterialButton(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onPressed: () {
+                              setState(() {
+                                isLockScreen = false;
+                                showAllButton = false;
+                                canPressed = true;
+                              });
+                            },
+                            child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white38,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: const Icon(
+                                  Icons.lock_outline,
+                                  color: Colors.black,
+                                  size: 30,
+                                )),
+                          ),
+                          const Text(
+                            "Màn hình khóa",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Text(
+                            "Ấn để mở khóa\n",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 11,
                             ),
-                            child: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                              size: 40,
-                            )),
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -623,7 +654,217 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                   ),
                 )
               ],
-            )
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Visibility(
+                  visible: isEditSub,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        padding: const EdgeInsets.all(0),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onPressed: () {
+                          setState(() {
+                            isEditSub = false;
+                            showAllButton = true;
+                            canPressed = true;
+                          });
+                        },
+                        child: Container(
+                            color: Colors.black,
+                            height: MediaQuery.of(context).size.height - 50,
+                            width: MediaQuery.of(context).size.width,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  padding: EdgeInsets.fromLTRB(50, 30, 30, 0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "Âm thanh\n",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      Text(
+                                        "            Tiếng anh [Gốc]",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng Nhật",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng Việt",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng Hàn",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  padding: EdgeInsets.fromLTRB(50, 30, 30, 0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "Phụ đề\n",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      Text(
+                                        "            Tắt",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng anh [CC]",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng Việt",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "            Tiếng Hàn",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Divider(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),

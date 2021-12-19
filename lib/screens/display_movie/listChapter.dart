@@ -60,7 +60,7 @@ class _ListChapterState extends State<ListChapter> {
                           "Tập ${index + 1}",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 14,
                               fontWeight: FontWeight.w600),
                         )
                       ],
