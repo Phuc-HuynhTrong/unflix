@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
+import 'package:unflix/screens/profile_screen/change_password.dart';
 import 'package:unflix/screens/profile_screen/favourite_list_screen.dart';
 import 'package:unflix/style/text_style.dart';
 
@@ -30,7 +31,7 @@ class AccountScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
               height: 20,
@@ -46,65 +47,82 @@ class AccountScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-              child: Text(
-                "Kiêm Lơm",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              child: Center(
+                child: Text(
+                  "Kiêm Lơm",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ),
             Container(
-              child: Text(
-                "tkl84@gmail.com",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white),
+              child: Center(
+                child: Text(
+                  "tkl84@gmail.com",
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white),
+                ),
               ),
             ),
             SizedBox(
               height: 8,
             ),
             Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                    size: 18,
-                  ),
-                  SizedBox(width: 6),
-                  Text(
-                    "Đổi mật khẩu",
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChangePasswordScreen()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      "Đổi mật khẩu",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
               height: 36,
             ),
             Container(
-              child: Text(
-                "THỐNG KÊ",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              child: Center(
+                child: Text(
+                  "THỐNG KÊ",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => FavouriteListScreen()));
-              },
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FavouriteListScreen()));
+                },
                 child: InfomationCard(
                     title: "Phim đã xem",
                     quantity: "52",
@@ -120,8 +138,11 @@ class AccountScreen extends StatelessWidget {
               height: 12,
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => FavouriteListScreen()));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FavouriteListScreen()));
               },
               child: InfomationCard(
                   title: "Phim đã thích",

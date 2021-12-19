@@ -4,9 +4,14 @@ import 'package:video_player/video_player.dart';
 
 import 'package:unflix/screens/incoming_screen/notification_screen.dart';
 
-class IncomingScreen extends StatelessWidget {
+class IncomingScreen extends StatefulWidget {
   const IncomingScreen({Key? key}) : super(key: key);
 
+  @override
+  State<IncomingScreen> createState() => _IncomingScreenState();
+}
+
+class _IncomingScreenState extends State<IncomingScreen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -54,7 +59,7 @@ class IncomingScreen extends StatelessWidget {
                 discription:
                     'Bị giáng chức, vị thanh tra biến thành cái đầu buồi',
                 tag:
-                    'Đen tối • Kịch tính • Phim giật gân • Chính kịch • Như cái đầu buồi',
+                    'Đen tối • Kịch tính • Phim giật gân • Chính kịch ',
                 dateRelease: 'Ra mắt vào Thứ Sáu',
               ),
             ],
@@ -123,7 +128,12 @@ class _CustomCardState extends State<CustomCard> {
         _videoPlayerControllercontroller1.initialize();
     _videoPlayerControllercontroller1.setLooping(true);
   }
-
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _videoPlayerControllercontroller1.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(

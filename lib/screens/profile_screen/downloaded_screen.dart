@@ -85,6 +85,7 @@ var recommendList = [
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg")
 ];
+
 class _DownloadedScreenState extends State<DownloadedScreen> {
   @override
   Widget build(BuildContext context) {
@@ -133,10 +134,8 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                   await Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              DisplayMovieScreen(
-                                assetVideo:
-                                'assets/videos/TopGun.mp4',
+                          builder: (context) => DisplayMovieScreen(
+                                assetVideo: 'assets/videos/TopGun.mp4',
                                 isSingleFlim: false,
                               )));
                 },
@@ -210,18 +209,19 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             onTap: () {
                               setState(() {
                                 downloadedVideo.removeAt(i);
-                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                    //width: MediaQuery.of(context).size.width ,
-                                    backgroundColor: Color(0xffF6C700),
-                                    content: Text(
-                                      "Đã xóa",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  //width: MediaQuery.of(context).size.width ,
+                                  backgroundColor: Color(0xffF6C700),
+                                  content: Text(
+                                    "Đã xóa",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ));
                               });
                             },
                             child: const Text(
@@ -319,7 +319,8 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        await ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        await ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
                           //width: MediaQuery.of(context).size.width ,
                           backgroundColor: Color(0xffF6C700),
                           content: Text(
@@ -331,11 +332,8 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ));
-                        setState(() {
-                          downloadedVideo.add(recommendList[i]);
-                          recommendList.removeAt(i);
-                        });
-                        await ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        await ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
                           //width: MediaQuery.of(context).size.width ,
                           backgroundColor: Color(0xffF6C700),
                           content: Text(
@@ -347,6 +345,14 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ));
+                        Future.delayed(
+                            Duration(seconds: 3),
+                                () => {
+                              setState(() {
+                                downloadedVideo.add(recommendList[i]);
+                                recommendList.removeAt(i);
+                              })
+                            });
                       },
                       child: Container(
                         alignment: Alignment.center,
