@@ -666,19 +666,25 @@ class _DisplayMovieScreenState extends State<DisplayMovieScreen>
                             canPressed = true;
                           });
                         },
-                        child: Container(
-                            color: Colors.black,
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: ListChapter(
-                                    list: listPoster.listContinue2,
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                              sigmaX: 100,
+                              sigmaY: 100,
+                              tileMode: TileMode.values[0]),
+                          child: Container(
+                              //color: Colors.black,
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: ListChapter(
+                                      list: listPoster.listContinue2,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            )),
+                                ],
+                              )),
+                        ),
                       )
                     ],
                   ),

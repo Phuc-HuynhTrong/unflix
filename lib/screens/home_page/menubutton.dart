@@ -9,6 +9,15 @@ Widget MenuButton(BuildContext context) {
         Icons.more_vert_rounded,
         color: Colors.white,
       ),
+      onSelected: (int v){
+        if(v == 1){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FilmInformationScreen()));
+        }
+      },
       itemBuilder: (context) => [
             PopupMenuItem<int>(
               value: 0,
@@ -23,12 +32,6 @@ Widget MenuButton(BuildContext context) {
             ),
             PopupMenuItem<int>(
               value: 1,
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FilmInformationScreen()));
-              },
               child: const Text(
                 "Xem thông tin",
                 style: TextStyle(

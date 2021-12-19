@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:unflix/core/models/SuperIcon.dart';
+import 'package:unflix/screens/display_movie/display_movie_screen.dart';
+import 'package:unflix/screens/film_information/film_information_screen.dart';
 import 'package:unflix/style/text_style.dart';
 
 class DownloadedScreen extends StatefulWidget {
@@ -79,17 +82,33 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
         color: Colors.black,
         padding: EdgeInsets.all(8),
         child: ListView(
-          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics:
+              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: 8),
-              child: Text(
+              child: const Text(
                 'Đã tải xuống',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
             for (int i = 0; i < downloadedVideo.length; i++)
-              Container(
+              GestureDetector(
+                onTap: () async {
+                  SystemChrome.setPreferredOrientations([
+                    DeviceOrientation.landscapeLeft,
+                    DeviceOrientation.landscapeRight
+                  ]);
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DisplayMovieScreen(
+                                assetVideo:
+                                'assets/videos/TopGun.mp4',
+                                isSingleFlim: false,
+                              )));
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,15 +158,53 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       alignment: Alignment.center,
-                      child: Icon(
-                        Icons.more_vert_rounded,
-                        color: Color(0xffe7e7e7),
-                        size: 24,
+                      child: PopupMenuButton(
+                        onSelected: (int v) {
+                          if (v == 1) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        FilmInformationScreen()));
+                          }
+                        },
+                        itemBuilder: (context) => [
+                          PopupMenuItem<int>(
+                            value: 0,
+                            onTap: () {
+                              setState(() {
+                                downloadedVideo.removeAt(0);
+                              });
+                            },
+                            child: const Text(
+                              "Xóa",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                          PopupMenuItem<int>(
+                            value: 1,
+                            child: const Text(
+                              "Xem thông tin",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                            ),
+                          )
+                        ],
+                        child: const Icon(
+                          Icons.more_vert_rounded,
+                          color: Color(0xffe7e7e7),
+                          size: 24,
+                        ),
                       ),
                     ),
                   ],

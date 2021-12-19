@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unflix/screens/auth_screens/login_screen.dart';
 import 'package:unflix/screens/home_page/home_page_sreen.dart';
 import 'package:unflix/screens/profile_screen/account_screen.dart';
 import 'package:unflix/screens/profile_screen/downloaded_screen.dart';
@@ -13,7 +14,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -32,7 +32,9 @@ class ProfileScreen extends StatelessWidget {
         color: Colors.black,
         child: ListView(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             UserAvatar(),
             CustomButton(
               leading: Icons.check,
@@ -60,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            SignOutButton(),
+            SignOutButton(context),
             Text(
               'Phiên bản 1.0.0',
               textAlign: TextAlign.center,
@@ -75,11 +77,12 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget SignOutButton() {
+  Widget SignOutButton(BuildContext context) {
     return Center(
       child: GestureDetector(
         onTap: () {
-
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => LoginScreen()));
         },
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 10.0),

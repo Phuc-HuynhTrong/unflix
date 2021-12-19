@@ -54,7 +54,7 @@ class MainPoster extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                           image: listPoster[index].poster,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         )),
                         child: Container(
                           alignment: Alignment.bottomLeft,
