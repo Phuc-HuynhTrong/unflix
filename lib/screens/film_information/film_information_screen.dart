@@ -5,6 +5,7 @@ import 'package:unflix/screens/display_movie/display_movie_screen.dart';
 import 'package:unflix/screens/film_information/bottom_tap_bar.dart';
 import 'package:unflix/screens/film_information/score_row.dart';
 import 'package:video_player/video_player.dart';
+import 'package:share/share.dart';
 
 class FilmInformationScreen extends StatefulWidget {
   _FilmInformationScreenState createState() => _FilmInformationScreenState();
@@ -354,7 +355,12 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                 ),
               ),
               MaterialButton(
-                onPressed: () {
+                onPressed: () async {
+                 final RenderBox box = context.findRenderObject() as RenderBox;
+                  Share.share("Gambit Hậu",
+                      sharePositionOrigin:
+                      box.localToGlobal(Offset.zero) &
+                      box.size);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
