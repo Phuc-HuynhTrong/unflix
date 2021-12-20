@@ -102,93 +102,96 @@ class _FavouriteListScreenState extends State<FavouriteListScreen> {
                   ),
           ],
         ),
-        body: GridView.count(
-            physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-            crossAxisSpacing: 15.0,
-            mainAxisSpacing: 20.0,
-            childAspectRatio: 0.7,
-            crossAxisCount: 3,
-            children: List.generate(listFilm.length, (index) {
-              return Container(
-                height: 100.0,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      !isShowToDelete
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      FilmInformationScreen()))
-                          : {
-                              setState(() {
-                                if(listDelete.contains(index))
-                                  {
-                                    listDelete.remove(index);
+        body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          child: GridView.count(
+              physics:
+                  BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              crossAxisSpacing: 15.0,
+              mainAxisSpacing: 20.0,
+              childAspectRatio: 0.7,
+              crossAxisCount: 3,
+              children: List.generate(listFilm.length, (index) {
+                return Container(
+                  height: 100.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        !isShowToDelete
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        FilmInformationScreen()))
+                            : {
+                                setState(() {
+                                  if(listDelete.contains(index))
+                                    {
+                                      listDelete.remove(index);
+                                    }
+                                  else{
+                                    listDelete.add(index);
                                   }
-                                else{
-                                  listDelete.add(index);
-                                }
-                              })
-                            };
-                    },
-                    onLongPress: () {
-                      if (!isShowToDelete) {
-                        setState(() {
-                          isShowToDelete = true;
-                          listDelete.add(index);
-                        });
-                      }
-                    },
-                    child: !isShowToDelete
-                        ? Image(
-                            height: 120.0,
-                            width: 50.0,
-                            fit: BoxFit.fill,
-                            image: listFilm[index],
-                          )
-                        : Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
+                                })
+                              };
+                      },
+                      onLongPress: () {
+                        if (!isShowToDelete) {
+                          setState(() {
+                            isShowToDelete = true;
+                            listDelete.add(index);
+                          });
+                        }
+                      },
+                      child: !isShowToDelete
+                          ? Image(
+                              height: 120.0,
+                              width: 50.0,
+                              fit: BoxFit.fill,
                               image: listFilm[index],
-                              fit: BoxFit.cover,
-                            )),
-                            child: GestureDetector(
-                              child: Container(
-                                alignment: Alignment.bottomRight,
-                                  child: listDelete.contains(index)
-                                      ? Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                          child: const Center(
-                                            child: Icon(
-                                              Icons.check,
-                                              color: Colors.blue,
-                                              size: 30,
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                image: listFilm[index],
+                                fit: BoxFit.cover,
+                              )),
+                              child: GestureDetector(
+                                child: Container(
+                                  alignment: Alignment.bottomRight,
+                                    child: listDelete.contains(index)
+                                        ? Container(
+                                            height: 30,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
                                             ),
-                                          ),
-                                        )
-                                      : Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                          child: const Center(),
-                                        )),
-                            )),
+                                            child: const Center(
+                                              child: Icon(
+                                                Icons.check,
+                                                color: Colors.blue,
+                                                size: 30,
+                                              ),
+                                            ),
+                                          )
+                                        : Container(
+                                            height: 30,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: const Center(),
+                                          )),
+                              )),
+                    ),
                   ),
-                ),
-              );
-            })));
+                );
+              })),
+        ));
   }
 }

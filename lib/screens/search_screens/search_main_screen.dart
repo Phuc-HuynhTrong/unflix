@@ -63,6 +63,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                         width: 4,
                       ),
                       Container(
+                        margin: EdgeInsets.only(top: 3),
                         height: 40,
                         width: !selected ? 100 : size.width+100,
                         child: TextFormField(
@@ -88,7 +89,7 @@ class _SearchMainScreenState extends State<SearchMainScreen> {
                             ),
                             filled: true,
                             fillColor: selected
-                                ? Color(0xff2B2B2B)
+                                ? Color(0xff323232)
                                 : Color(0xff323232),
                           ),
                           onChanged: (val) {

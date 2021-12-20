@@ -31,34 +31,34 @@ var downloadedVideo = [
       "50 sắc thái tập 2 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail1.png"),
   new VideoItem(
       "50 sắc thái tập 3 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail2.jpg"),
   new VideoItem(
       "50 sắc thái tập 4 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail3.jpg"),
   new VideoItem(
       "50 sắc thái tập 5 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail4.jpg"),
   new VideoItem(
       "50 sắc thái tập 6 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg")
+      "assets/images/thumbnail5.jpg")
 ];
 var recommendList = [
   new VideoItem(
       "50 sắc thái tập 7 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail6.jpg"),
   new VideoItem(
       "50 sắc thái tập 8 full HD VietSub không che",
       "Family Television series",
@@ -68,22 +68,22 @@ var recommendList = [
       "50 sắc thái tập 9 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail7.jpg"),
   new VideoItem(
       "50 sắc thái tập 10 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail8.jpg"),
   new VideoItem(
       "50 sắc thái tập 11 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg"),
+      "assets/images/thumbnail9.jpg"),
   new VideoItem(
       "50 sắc thái tập 12 full HD VietSub không che",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
-      "assets/images/horizontal1.jpg")
+      "assets/images/thumbnail10.jpg")
 ];
 
 class _DownloadedScreenState extends State<DownloadedScreen> {
@@ -139,119 +139,122 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                                 isSingleFlim: false,
                               )));
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Image.asset(downloadedVideo[i].thumbnailImg,
-                            width: 0.384 * size.width,
-                            height: 0.384 * size.width * 9 / 16,
-                            fit: BoxFit.fill),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Container(
-                      width: 0.43 * size.width,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 2),
-                            child: Text(
-                              downloadedVideo[i].name,
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.white),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 2),
-                            child: Text(
-                              downloadedVideo[i].category,
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xff8F8F8F)),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 2),
-                            child: Text(
-                              downloadedVideo[i].description,
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xff8F8F8F)),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: PopupMenuButton(
-                        onSelected: (int v) {
-                          if (v == 1) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        FilmInformationScreen()));
-                          }
-                        },
-                        itemBuilder: (context) => [
-                          PopupMenuItem<int>(
-                            value: 0,
-                            onTap: () {
-                              setState(() {
-                                downloadedVideo.removeAt(i);
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
-                                  //width: MediaQuery.of(context).size.width ,
-                                  backgroundColor: Color(0xffF6C700),
-                                  content: Text(
-                                    "Đã xóa",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  duration: Duration(milliseconds: 2000),
-                                ));
-                              });
-                            },
-                            child: const Text(
-                              "Xóa",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          PopupMenuItem<int>(
-                            value: 1,
-                            child: const Text(
-                              "Xem thông tin",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                              ),
-                            ),
-                          )
-                        ],
-                        child: const Icon(
-                          Icons.more_vert_rounded,
-                          color: Color(0xffe7e7e7),
-                          size: 24,
+                child: Container(
+                  margin: EdgeInsets.only(top: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.asset(downloadedVideo[i].thumbnailImg,
+                              width: 0.384 * size.width,
+                              height: 0.384 * size.width * 9 / 16,
+                              fit: BoxFit.fill),
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Container(
+                        width: 0.43 * size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 2),
+                              child: Text(
+                                downloadedVideo[i].name,
+                                style:
+                                    TextStyle(fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 2),
+                              child: Text(
+                                downloadedVideo[i].category,
+                                style: TextStyle(
+                                    fontSize: 12, color: Color(0xff8F8F8F)),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 2),
+                              child: Text(
+                                downloadedVideo[i].description,
+                                style: TextStyle(
+                                    fontSize: 12, color: Color(0xff8F8F8F)),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        child: PopupMenuButton(
+                          onSelected: (int v) {
+                            if (v == 1) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FilmInformationScreen()));
+                            }
+                          },
+                          itemBuilder: (context) => [
+                            PopupMenuItem<int>(
+                              value: 0,
+                              onTap: () {
+                                setState(() {
+                                  downloadedVideo.removeAt(i);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    //width: MediaQuery.of(context).size.width ,
+                                    backgroundColor: Color(0xffF6C700),
+                                    content: Text(
+                                      "Đã xóa",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    duration: Duration(milliseconds: 2000),
+                                  ));
+                                });
+                              },
+                              child: const Text(
+                                "Xóa",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                            PopupMenuItem<int>(
+                              value: 1,
+                              child: const Text(
+                                "Xem thông tin",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            )
+                          ],
+                          child: const Icon(
+                            Icons.more_vert_rounded,
+                            color: Color(0xffe7e7e7),
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             SizedBox(
@@ -266,6 +269,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
             ),
             for (int i = 0; i < recommendList.length; i++)
               Container(
+                margin: EdgeInsets.only(top: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,

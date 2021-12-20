@@ -17,15 +17,16 @@ class _IncomingScreenState extends State<IncomingScreen> {
     return Theme(
       data: ThemeData.dark(),
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff111111),
         appBar: AppBar(
+          elevation: 0,
           automaticallyImplyLeading: false,
           title: Text(
             'Sắp ra mắt',
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.0),
           ),
           iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xff111111),
           actions: [
             IconButton(
               onPressed: () {},
@@ -36,9 +37,7 @@ class _IncomingScreenState extends State<IncomingScreen> {
           ],
         ),
         body: Container(
-          child: ListView(
-            physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          child: Column(
             children: [
               ListTile(
                 leading: Icon(Icons.notifications_none_outlined),
@@ -47,20 +46,42 @@ class _IncomingScreenState extends State<IncomingScreen> {
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (_) => NotificationScreen())),
               ),
-              CustomCard(
-                title: 'Kẻ đeo bám',
-                discription:
-                    'Hiện đã kết hôn và có một đứa con nhỏ, Love và Joe cố gắng vun đắp một cuộc sống bình thường ở vùng ngoại ô giàu có Madre Linda. Nhưng mà, thói cũ khó bỏ.',
-                tag: 'Đen tối • Kịch tính • Phim giật gân • Chính kịch',
-                dateRelease: 'Mùa 3 ra mắt vào 15 tháng 10',
-              ),
-              CustomCard(
-                title: 'Tổng đài truy vết',
-                discription:
-                    'Bị giáng chức, vị thanh tra biến thành cái đầu buồi',
-                tag:
-                    'Đen tối • Kịch tính • Phim giật gân • Chính kịch ',
-                dateRelease: 'Ra mắt vào Thứ Sáu',
+              Expanded(
+                child: ListView(
+                  physics:
+                      BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  children: [
+
+                    CustomCard(
+                      title: 'Kẻ đeo bám',
+                      discription:
+                          'Hiện đã kết hôn và có một đứa con nhỏ, Love và Joe cố gắng vun đắp một cuộc sống bình thường ở vùng ngoại ô giàu có Madre Linda. Nhưng mà, thói cũ khó bỏ.',
+                      tag: 'Đen tối • Kịch tính • Phim giật gân • Chính kịch',
+                      dateRelease: 'Mùa 3 ra mắt vào 15 tháng 10',
+                    ),
+                    CustomCard(
+                      title: 'Tổng đài truy vết',
+                      discription:
+                          'Bị giáng chức, vị thanh tra biến thành cái đầu buồi',
+                      tag: 'Đen tối • Kịch tính • Phim giật gân • Chính kịch ',
+                      dateRelease: 'Ra mắt vào Thứ Sáu',
+                    ),
+                    CustomCard(
+                      title: 'Tổng đài truy vết',
+                      discription:
+                          'Bị giáng chức, vị thanh tra biến thành cái đầu buồi',
+                      tag: 'Đen tối • Kịch tính • Phim giật gân • Chính kịch ',
+                      dateRelease: 'Ra mắt vào Thứ Sáu',
+                    ),
+                    CustomCard(
+                      title: 'Tổng đài truy vết',
+                      discription:
+                          'Bị giáng chức, vị thanh tra biến thành cái đầu buồi',
+                      tag: 'Đen tối • Kịch tính • Phim giật gân • Chính kịch ',
+                      dateRelease: 'Ra mắt vào Thứ Sáu',
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -128,12 +149,14 @@ class _CustomCardState extends State<CustomCard> {
         _videoPlayerControllercontroller1.initialize();
     _videoPlayerControllercontroller1.setLooping(true);
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _videoPlayerControllercontroller1.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -257,29 +280,33 @@ class _CustomCardState extends State<CustomCard> {
                     setState(() {
                       remindMe = !remindMe;
 
-                      remindMe?ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        //width: MediaQuery.of(context).size.width ,
-                        backgroundColor: Color(0xffF6C700),
-                        content: Text(
-                          "Đã cài đặt thông báo",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      )): ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        //width: MediaQuery.of(context).size.width ,
-                        backgroundColor: Color(0xffF6C700),
-                        content: Text(
-                          "Đã tắt thông báo",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      ));
+                      remindMe
+                          ? ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                              //width: MediaQuery.of(context).size.width ,
+                              backgroundColor: Color(0xffF6C700),
+                              content: Text(
+                                "Đã cài đặt thông báo",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ))
+                          : ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                              //width: MediaQuery.of(context).size.width ,
+                              backgroundColor: Color(0xffF6C700),
+                              content: Text(
+                                "Đã tắt thông báo",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ));
                     });
                   },
                   child: CustomIconAndLabel(
@@ -326,6 +353,13 @@ class _CustomCardState extends State<CustomCard> {
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0),
             ),
           ),
+          /*SizedBox(height: 18,),
+          Container(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Divider(
+                thickness: 0.4,
+                color: Colors.white38,
+              ))*/
         ],
       ),
     );
