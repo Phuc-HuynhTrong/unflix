@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Hello, Long time no see!',
+                'Xin chào! Mau đăng nhập và tận hưởng Unflix',
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
               child: Text(
-                'SIGN IN',
+                'Đăng nhập',
                 style: TextStyle(
                     fontSize: 80,
                     fontWeight: FontWeight.bold,

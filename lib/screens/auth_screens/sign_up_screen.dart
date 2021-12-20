@@ -27,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           children: [
             Container(
               alignment: Alignment.centerLeft,
-              child: Text('Hello, Nice to meet you!', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+              child: Text('Xin chào! Chào mừng bạn đến với Unflix', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
             ),
 
             SizedBox(height: 12,),
@@ -157,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('SIGN UP', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
+              child: Text('Đăng ký', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),

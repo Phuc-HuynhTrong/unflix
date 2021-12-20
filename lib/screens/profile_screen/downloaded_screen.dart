@@ -23,64 +23,64 @@ class VideoItem {
 
 var downloadedVideo = [
   new VideoItem(
-      "50 sắc thái tập 1 full HD VietSub không che",
+      "50 sắc thái tập 1 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 2 full HD VietSub không che",
+      "50 sắc thái tập 2 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail1.png"),
   new VideoItem(
-      "50 sắc thái tập 3 full HD VietSub không che",
+      "50 sắc thái tập 3 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail2.jpg"),
   new VideoItem(
-      "50 sắc thái tập 4 full HD VietSub không che",
+      "50 sắc thái tập 4 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail3.jpg"),
   new VideoItem(
-      "50 sắc thái tập 5 full HD VietSub không che",
+      "50 sắc thái tập 5 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail4.jpg"),
   new VideoItem(
-      "50 sắc thái tập 6 full HD VietSub không che",
+      "50 sắc thái tập 6 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail5.jpg")
 ];
 var recommendList = [
   new VideoItem(
-      "50 sắc thái tập 7 full HD VietSub không che",
+      "50 sắc thái tập 7 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail6.jpg"),
   new VideoItem(
-      "50 sắc thái tập 8 full HD VietSub không che",
+      "50 sắc thái tập 8 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/horizontal1.jpg"),
   new VideoItem(
-      "50 sắc thái tập 9 full HD VietSub không che",
+      "50 sắc thái tập 9 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail7.jpg"),
   new VideoItem(
-      "50 sắc thái tập 10 full HD VietSub không che",
+      "50 sắc thái tập 10 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail8.jpg"),
   new VideoItem(
-      "50 sắc thái tập 11 full HD VietSub không che",
+      "50 sắc thái tập 11 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail9.jpg"),
   new VideoItem(
-      "50 sắc thái tập 12 full HD VietSub không che",
+      "50 sắc thái tập 12 full HD VietSub",
       "Family Television series",
       "24tr lượt xem  -  2 năm trước",
       "assets/images/thumbnail10.jpg")

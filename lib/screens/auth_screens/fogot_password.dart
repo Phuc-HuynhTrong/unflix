@@ -23,11 +23,11 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
           children: [
             Container(
               alignment: Alignment.centerLeft,
-              child: Text('Opps, Fogot your password?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+              child: Text('Quên mật khẩu sao?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: Text('Enter your Email to reset password link.', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+              child: Text('Điền mail để nhận link đặt lại mật khẩu nào.', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
             ),
 
             SizedBox(height: 12,),
@@ -93,14 +93,14 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
             Container(
               alignment: Alignment.centerLeft,
 
-              child: Text('reset', style: TextStyle(fontSize: 30,height: 0.5, fontWeight: FontWeight.bold, color: Color(0xffffffff)),),
+              child: Text('đặt lại', style: TextStyle(fontSize: 30,height: 0.5, fontWeight: FontWeight.bold, color: Color(0xffffffff)),),
             ),
 
             Container(
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('Password', style: TextStyle(fontSize: 66, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
+              child: Text('Mật khẩu', style: TextStyle(fontSize: 66, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),

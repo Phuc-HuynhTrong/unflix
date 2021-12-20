@@ -301,7 +301,7 @@ class _DeleteAllButtonState extends State<DeleteAllButton> {
           Container(
             margin: EdgeInsets.only(left: 10, top: 18),
             alignment: Alignment.centerLeft,
-            child: Text("IPhone 14 porn Max", style: TextStyle(fontSize: 19, fontFamily: "Noto Sans", fontWeight: FontWeight.w500, color: Color(0xffdcdcdc)),),
+            child: Text("IPhone 14 Pro Max", style: TextStyle(fontSize: 19, fontFamily: "Noto Sans", fontWeight: FontWeight.w500, color: Color(0xffdcdcdc)),),
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 9, vertical: 9),
