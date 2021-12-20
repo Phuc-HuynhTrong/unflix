@@ -221,6 +221,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.center,
                                   ),
+                                  duration: Duration(milliseconds: 2000),
                                 ));
                               });
                             },
@@ -344,6 +345,7 @@ class _DownloadedScreenState extends State<DownloadedScreen> {
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
+                          duration: Duration(milliseconds: 1500),
                         ));
                         Future.delayed(
                             Duration(seconds: 3),

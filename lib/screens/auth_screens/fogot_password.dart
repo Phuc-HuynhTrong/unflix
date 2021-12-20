@@ -68,6 +68,7 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
+                  duration: Duration(milliseconds: 2000),
                 ));
               },
               child: Container(

@@ -271,6 +271,7 @@ class _DeleteAllButtonState extends State<DeleteAllButton> {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
+                   duration: Duration(milliseconds: 2000),
                 ));
               });
             },

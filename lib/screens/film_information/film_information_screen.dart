@@ -16,6 +16,9 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   late TabController _tabController;
+  bool add = false;
+  bool like = false;
+  bool dowload = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -232,27 +235,53 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
             children: [
               MaterialButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    //width: MediaQuery.of(context).size.width ,
-                    backgroundColor: Color(0xffF6C700),
-                    content: Text(
-                      "Đã thêm vào danh sách",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ));
+                  setState(() {
+                    add = !add;
+                  });
+                  add
+                      ? ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã thêm vào danh sách",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(milliseconds: 1500),
+                        ))
+                      : ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã xóa khỏi danh sách",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(milliseconds: 1500),
+                        ));
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30,
-                    ), // icon
+                    !add
+                        ? Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 30,
+                          )
+                        : Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                            size: 30,
+                          ), // icon
                     Text(
                       "Danh sách",
                       style: TextStyle(
@@ -264,7 +293,40 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    like = !like;
+                  });
+                  like
+                      ? ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã thích",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(milliseconds: 1500),
+                        ))
+                      : ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã bỏ thích",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(milliseconds: 1500),
+                        ));
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -272,10 +334,15 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                         margin: EdgeInsets.only(bottom: 5),
                         width: 25,
                         height: 25,
-                        child: Image.asset(
-                          "assets/icons/shape.png",
-                          fit: BoxFit.fill,
-                        )), // icon
+                        child: !like
+                            ? Image.asset(
+                                "assets/icons/shape.png",
+                                fit: BoxFit.fill,
+                              )
+                            : Image.asset(
+                                "assets/icons/thumbs-up.png",
+                                fit: BoxFit.fill,
+                              )), // icon
                     Text(
                       "Đánh giá",
                       style: TextStyle(
@@ -287,7 +354,8 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -308,27 +376,77 @@ class _FilmInformationScreenState extends State<FilmInformationScreen>
               ),
               MaterialButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    //width: MediaQuery.of(context).size.width ,
-                    backgroundColor: Color(0xffF6C700),
-                    content: Text(
-                      "Đã tải xuống",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ));
+                  Future.delayed(
+                      Duration(milliseconds: 1500),
+                      () => {
+                            setState(() {
+                              dowload = !dowload;
+                            })
+                          });
+                  !dowload
+                      ? {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            //width: MediaQuery.of(context).size.width ,
+                            backgroundColor: Color(0xffF6C700),
+                            content: Text(
+                              "Đang tải xuống...",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            duration: Duration(milliseconds: 1500),
+                          )),
+                          Future.delayed(
+                              Duration(milliseconds: 1500),
+                              () => {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                      //width: MediaQuery.of(context).size.width ,
+                                      backgroundColor: Color(0xffF6C700),
+                                      content: Text(
+                                        "Đã tải xuống",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      duration: Duration(milliseconds: 2000),
+                                    ))
+                                  })
+                        }
+                      : ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                          //width: MediaQuery.of(context).size.width ,
+                          backgroundColor: Color(0xffF6C700),
+                          content: Text(
+                            "Đã xóa khỏi thư mục tải xuống",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(milliseconds: 2200),
+                        ));
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.download,
-                      color: Colors.white,
-                      size: 30,
-                    ), // icon
+                    !dowload
+                        ? Icon(
+                            Icons.download,
+                            color: Colors.white,
+                            size: 30,
+                          )
+                        : Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                            size: 30,
+                          ), // icon
                     Text(
                       "Tải xuống",
                       style: TextStyle(

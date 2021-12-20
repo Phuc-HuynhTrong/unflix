@@ -128,8 +128,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
+                  duration: Duration(milliseconds: 1000),
                 ));
-                Future.delayed(const Duration(milliseconds: 1000), () {
+                Future.delayed(const Duration(milliseconds: 800), () {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
                 });
               },

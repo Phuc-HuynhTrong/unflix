@@ -45,9 +45,24 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           showButton
               ? IconButton(
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.pop(context);
-                    }
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      //width: MediaQuery.of(context).size.width ,
+                      backgroundColor: Color(0xffF6C700),
+                      content: Text(
+                        "Đổi mật khẩu thành công",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      duration: Duration(milliseconds: 2200),
+                    ));
+                    Future.delayed(
+                        Duration(milliseconds: 1500),
+                        () => {
+                              Navigator.pop(context),
+                            });
                   },
                   icon: Icon(
                     Icons.done,

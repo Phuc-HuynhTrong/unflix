@@ -29,7 +29,7 @@ class _HelpScreenState extends State<HelpScreen> {
         textTheme: TextTheme(
             headline6: TextInApp().navigation(Colors.white, context)),
         title: const Text(
-          "Trợ giúp và Hỗ trợ",
+          "Trợ giúp và phản hồi",
         ),
       ),
       body: Column(

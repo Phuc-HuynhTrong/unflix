@@ -29,7 +29,6 @@ class MoviePosterController extends GetxController
     _animationController.reset();
     _animationController.dispose();
     pageController.dispose();
-    print('close controller');
   }
 
   RxInt get currentPage => this._currentPage;

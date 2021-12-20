@@ -85,6 +85,7 @@ class _FavouriteListScreenState extends State<FavouriteListScreen> {
                               fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
+                        duration: Duration(milliseconds: 2000),
                       ));
                     },
                     icon: const Icon(
