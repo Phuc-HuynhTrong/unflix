@@ -20,7 +20,7 @@ class _HelpCenter extends State<HelpCenter> {
             color: Colors.white,
           ),
           title: const Text(
-            'Liên hệ tổng đài',
+            'Trung tâm trợ giúp',
             style: TextStyle(
               color: Colors.white,
               fontSize: 17.0,
@@ -50,51 +50,87 @@ class _HelpCenter extends State<HelpCenter> {
         // Nếu đang gửi thì sẽ hiển thị xoay xoay
         body: Column(
           children: [
-            Center(
-              child: SizedBox(
-                height: size.width / 3.5,
-                width: size.width / 3.5,
-                child: Image.asset(
-                  'assets/icons/icon1.png',
-                  fit: BoxFit.cover,
-                ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      "\nLiên hệ tổng đài:",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: Image.asset(
+                      'assets/icons/icon1.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "19520000",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
               ),
             ),
-            const Center(
-              child: Text(
-                "\nTổng đài Unflix",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: EdgeInsets.only(top: 10),
-                child: Text(
-                  "19520000",
-                  style: TextStyle(
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  const Text(
+                    "Hoặc truy cập vào:  ",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  const Text(
+                    "trungtamtrogiupunflix.com.vn",
+                    style: TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18),
-                ),
+                      fontSize: 16,
+                      fontStyle: FontStyle.italic,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Row(
+                children: [
+                  const Text(
+                    "để được giúp đỡ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Spacer(),
             Center(
               child: Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: const Text(
-                  "Ấn vào hình điện thoại",
+                  "Ấn vào hình điện thoại ở góc trên",
                   style: TextStyle(color: Colors.white60, fontSize: 15),
                 ),
               ),
             ),
             Center(
               child: Container(
-                margin: const EdgeInsets.only(top: 3),
+                margin: const EdgeInsets.only(top: 3, bottom: 30),
                 child: const Text(
-                  "ở góc trên bên phải để gọi",
+                  " bên phải để gọi cho tổng đài",
                   style: TextStyle(color: Colors.white60, fontSize: 15),
                 ),
               ),
