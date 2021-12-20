@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 'Đăng nhập',
                 style: TextStyle(
-                    fontSize: 80,
+                    fontSize: 60,
                     fontWeight: FontWeight.bold,
                     height: 0.7,
                     color: Colors.white),

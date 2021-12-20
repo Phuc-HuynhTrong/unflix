@@ -157,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('Đăng ký', style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
+              child: Text('Đăng ký', style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold,height: 0.7, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),

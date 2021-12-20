@@ -100,7 +100,7 @@ class _FogotPasswordScreenState extends State<FogotPasswordScreen> {
               padding: EdgeInsets.zero,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 0),
-              child: Text('Mật khẩu', style: TextStyle(fontSize: 66, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
+              child: Text('Mật khẩu', style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold,height: 1.1, color: Colors.white), ),
             ),
 
             Expanded(child: Container( child: Text(""),),),
